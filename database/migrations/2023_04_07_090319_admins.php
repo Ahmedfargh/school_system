@@ -18,10 +18,12 @@ class Admins extends Migration
             $table->bigIncrements("id");
             $table->string("name");
             $table->string("email")->unique();
-            $table->timestamp("add_in");
             $table->string("password");
             $table->rememberToken("password");
             $table->integer("added_by");
+            $table->timestamp("updated_at");
+
+            $table->timestamp("created_at");
             #$table->foreign("added_by")->references("id")->onUpdate("cascade")->on("admins");
         });
        

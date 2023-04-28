@@ -1,6 +1,7 @@
 <?php
-session_start();
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\adminController;
+session_start();
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,9 @@ Route::get("admin/index",function(){
 })->middleware("protected_against_guest_users")->name("admin_index");
 Route::get("admin/login",function(){
     return view("admin.login");
-})->name("admin_login");
+})->name("admin_login")->middleware("protected_against_guest_users");
+Route::get("admin/register",function(){
+    return view("admin.register");
+})->name("register");
+Route::post("admin/add",[adminController::class,"register"])->name("register_admin");
+Route::post("admin/login/do",[adminController::class,"login"])->name("login_do");

@@ -16,7 +16,7 @@ class guard
      */
     public function handle(Request $request, Closure $next)
     {
-        if(isset($_SESSION["uuser_id"])){
+        if(isset($_SESSION["user_id"])){
             return $next($request);
         }
         return redirect("/admin/login");
