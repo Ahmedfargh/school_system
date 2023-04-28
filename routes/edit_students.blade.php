@@ -13,6 +13,7 @@ session_start();
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,7 +28,6 @@ Route::get("admin/register",function(){
 })->name("register");
 Route::post("admin/add",[adminController::class,"register"])->name("register_admin");
 Route::post("admin/login/do",[adminController::class,"login"])->name("login_do");
-Route::get("admin/edit/student",function(){
-    return view("admin.edit_students");
+Route::get("admin/add/student",function(){
+    return view("admin.");
 })->middleware("protected_against_guest_users")->name("edit_student");
-Route::post("admin/edit/student/add",[adminController::class,"add_student"])->name("add_students")->middleware("protected_against_guest_users");
