@@ -27,11 +27,10 @@ class adminController extends Controller
     }
     public function login(Request $request){
         $password=$this->secure($request->input("admin_password"));
-        $admin=DB::select("SELECT * FROM admins where name like '%".$request->input("name")."%' and password='".$password."'");
+        $admin=DB::select("SELECT * FROM admins where name ='".$request->input("name")."' and password='".$password."'");
         if(count($admin)>0 && count($admin)<2){
             $_SESSION["user_id"]=$admin[0]->id;
-            //$_SESSION["user_id"]=;
-            return view("admin.index");
+            return view("admin.index",["statictics"=>$this->statistic()]);
         }else{
             //var_dump($admin);
             return view("admin.login");
@@ -45,9 +44,45 @@ class adminController extends Controller
         $student->address=$request->input("student_address");
         $student->nat_id =$request->input("student_nat_id");
         $student->birth_date=$request->input("student_birth_date");
-        $image_path=$_SERVER["HTTP_HOST"]."/".$request->file("student_image")->store("student_images");
+        $image_path="\\".$request->file("student_image")->move("public\\images\\");
         $student->personal_image=$image_path;
         $student->save();
         return view("admin.edit_students");
+    }
+    protected function search_by_name($name){
+        return DB::select("SELECT * FROM students where name like '%".$name."%';");
+    }
+    protected function search_by_address($address){
+        return DB::select("SELECT * FROM students where address like '%".$address."%';");
+    }
+    protected function search_by_id($id){
+        return DB::select("SELECT * FROM students where id=".$id);
+    }
+
+    public function search_students(Request $request){
+        $filter=str_replace('"',"",$request->input("key"));
+        $value=str_replace('"',"",$request->input("value"));
+        if($filter=="name"){
+            return $this->search_by_name($value);
+        }
+        else if($filter=="address"){
+            return $this->search_by_address($value);
+        }
+        else if($filter=="id"){
+            return $this->search_by_id($value);
+        }
+        return ["status"=>$request->input("key")];
+    }
+    public function statistic(){
+        return [
+            "student_count"=>DB::table("students")->count(),
+            "admin_count"=>DB::table("admins")->count(),
+            "classes_count"=>DB::table("classies")->count(),
+            "students_have_credit"=>DB::table("depts")->count(),
+            "teacher_count"=>DB::table("teachers")->count()
+        ];
+    }
+    public function get_statis(Request $req){
+        return $this->statistic();
     }
 }

@@ -8,6 +8,7 @@
     <!-- Bootstrap 3.3.2 JS -->
     <script src="{{asset('bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>    
     <!-- Morris.js charts -->
+    <script src="{{asset('js/jquery-1.10.2.js')}}"type="text/javascript"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="{{asset('plugins/morris/morris.min.js')}}" type="text/javascript"></script>
     <!-- Sparkline -->
@@ -37,5 +38,6 @@
 
     <!-- AdminLTE for demo purposes -->
     <script src="{{asset('dist/js/demo.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/ajax.js')}}"></script>
   </body>
 </html>

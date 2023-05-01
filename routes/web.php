@@ -31,3 +31,5 @@ Route::get("admin/edit/student",function(){
     return view("admin.edit_students");
 })->middleware("protected_against_guest_users")->name("edit_student");
 Route::post("admin/edit/student/add",[adminController::class,"add_student"])->name("add_students")->middleware("protected_against_guest_users");
+Route::any("admin/ajax/search/student",[adminController::class,"search_students"])->name("search_students");
+Route::any("admin/get/statictics",[adminController::class,"get_statis"]);
