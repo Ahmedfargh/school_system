@@ -56,13 +56,11 @@
                 <button type="submit" class="btn btn-primary">أضافة</button>
               </div>
             </form>
-            @include('admin.parts.search_student')
+            @include('admin/parts/search_student')
+            @include('admin/parts/update_student')
           </div><!-- /.box -->
-          
         </section>
-        <section class="content-header">
-          
-        </section>
+        
         <!-- Main content -->
         
       </div><!-- /.content-wrapper -->

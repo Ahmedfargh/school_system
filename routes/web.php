@@ -33,3 +33,5 @@ Route::get("admin/edit/student",function(){
 Route::post("admin/edit/student/add",[adminController::class,"add_student"])->name("add_students")->middleware("protected_against_guest_users");
 Route::any("admin/ajax/search/student",[adminController::class,"search_students"])->name("search_students");
 Route::any("admin/get/statictics",[adminController::class,"get_statis"]);
+Route::any("admin/student/delete",[adminController::class,"delete_students"])->middleware("protected_against_guest_users");
+Route::any("admin/student/update",[adminController::class,"update_std"]);

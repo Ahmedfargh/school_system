@@ -85,4 +85,44 @@ class adminController extends Controller
     public function get_statis(Request $req){
         return $this->statistic();
     }
+    public function delete_students(Request $req){
+        $std=DB::select("delete  FROM students  where id =".$req->input("std_id"));
+        var_dump($std);
+        $data_to_return=["message"=>"تم مسح الطالب "];
+        $std->delete();
+        return $data_to_return;
+    }
+    public function update_std(Request $req){
+        $std_id=str_replace('"',"",$req->input("std_id"));
+        $value=str_replace('"',"",$req->input("value"));
+        $field=str_replace('"',"",$req->input("field"));
+        $std=student::find($std_id);
+        echo $field;
+        echo $value;
+        echo $std_id;
+        if($field=="name"){
+            $result=["status"=>"تمت تغيير أسم الطالب من ".$std->name."إلى ".$value];
+            $std->name=$value;
+            $std->save();
+            return $result;
+        }else if($field=="address"){
+            $result=["status"=>$value."إلى".$std->address."تم تغيير العنوان من "];
+            $std->address=$value;
+            $std->save();
+            return $result;
+        }else if($field=="email"){
+            echo "shit";
+            $result=["status"=>$value."إلى ".$std->email."تمت عملية تغيير البريد الألكترونى من "];
+            $std->email=$value;
+            $std->save();
+            return $result;
+        }else if($field=="birth_date"){
+            echo $std->birth_date;
+            $result=["status"=>$value." إلى ".$std->birth_date."تم تغيير تاريخ الميلاد من "];
+            $std->birth_date=$value;
+            $std->save();
+            return $result;
+        }
+        return ["status"=>"fuck you"];
+    }
 }
