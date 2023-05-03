@@ -91,19 +91,14 @@ function refresh_statictics(){
         }
     });
 }
-function update_std(data){
-    call_ajax_post(data,"/admin/get/statictics",
-    {
-        render:function(data){
-            alert("تمت عملية التحديث بنجاح");
-        }
-    });
+function update_std(data,render){
+    call_ajax_post(data,"/admin/student/update",render);
 }
 $("#update_name").on("click",function(){
     let std_id=$("#std_id").val();
     let std_value=$("#new_std_name").val();
     if(std_id && std_value){
-        update_std({_token:$("input[name='_token']").val(),std_id:std_id,field:"name",value:std_value},"/admin/student/update",{
+        update_std({_token:$("input[name='_token']").val(),std_id:std_id,field:"name",value:std_value},{
             render:function(data){
                 console.log(data);
                 alert("تمت عملية التحديث بنجاح");
@@ -118,7 +113,7 @@ $("#update_std_address").on("click",function(){
     let std_value=$("#new_std_address").val();
     if(std_id && std_value){
         console.log({_token:$("input[name='_token']").val(),std_id:std_id,field:"address",value:std_value});
-        update_std({_token:$("input[name='_token']").val(),std_id:std_id,field:"address",value:std_value},"/admin/student/update",{
+        update_std({_token:$("input[name='_token']").val(),std_id:std_id,field:"address",value:std_value},{
             render:function(data){
                 console.log(data);
                 alert("تمت عملية التحديث بنجاح");
@@ -132,9 +127,10 @@ $("#update_std_email").on("click",function(){
     let std_id=$("#std_id").val();
     console.log(std_id);
     let std_value=$("#new_std_email").val();
+    console.log(std_value);
     if(std_id && std_value){
         //console.log({_token:$("input[name='_token']").val(),std_id:std_id,field:"email",value:std_value});
-        update_std({_token:$("input[name='_token']").val(),std_id:std_id,field:"email",value:std_value},"/admin/student/update",{
+        update_std({_token:$("input[name='_token']").val(),std_id:std_id,field:"email",value:std_value},{
             render:function(data){
                 console.log(serialze_data(data));
                 alert("تمت عملية التحديث بنجاح");
@@ -149,7 +145,7 @@ $("#update_std_date").on("click",function(){
     let std_value=$("#new_std_date").val();
     if(std_id && std_value){
         console.log({_token:$("input[name='_token']").val(),std_id:std_id,field:"brith_date",value:std_value});
-        update_std({_token:$("input[name='_token']").val(),std_id:std_id,field:"birth_date",value:std_value},"/admin/student/update",{
+        update_std({_token:$("input[name='_token']").val(),std_id:std_id,field:"birth_date",value:std_value},{
             render:function(data){
                 console.log(data);
                 alert("تمت عملية التحديث بنجاح");
