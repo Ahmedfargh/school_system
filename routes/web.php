@@ -28,8 +28,12 @@ Route::get("admin/register",function(){
 Route::post("admin/add",[adminController::class,"register"])->name("register_admin");
 Route::post("admin/login/do",[adminController::class,"login"])->name("login_do");
 Route::get("admin/edit/student",function(){
-    return view("admin.edit_students");
+    return view("admin.edit_students",["account"=>$_SESSION["user"]]);
 })->middleware("protected_against_guest_users")->name("edit_student");
+Route::get("admin/edit/teacher",function(){
+    return view("admin.edit_teacher",["account"=>$_SESSION["user"]]);
+})->name("edit_teacher")->middleware("protected_against_guest_users");
+
 Route::post("admin/edit/student/add",[adminController::class,"add_student"])->name("add_students")->middleware("protected_against_guest_users");
 Route::any("admin/ajax/search/student",[adminController::class,"search_students"])->name("search_students");
 Route::any("admin/get/statictics",[adminController::class,"get_statis"]);

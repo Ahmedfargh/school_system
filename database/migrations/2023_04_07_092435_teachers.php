@@ -24,6 +24,8 @@ class Teachers extends Migration
             $table->datetime("birth_date");
             $table->string("nat_id",32)->unique();
             $table->integer("added_by");
+            $table->string("Religion",15);
+            $table->string("gender",10);
         });
     }
 

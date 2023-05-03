@@ -37,24 +37,6 @@
                   <label for="student_birth_date">تاريخ الميلاد</label>
                   <input type="date" class="form-control"name='student_birth_date'id="student_birth_date"required>
                 </div>
-                <div class="form-group">
-                  <label for="student_birth_date"> الديانة</label>
-                  <select name="student_relgion" id=""class='form-control'>
-                    <option value="مسلم">مسلم</option>
-                    <option value="مسيحى">مسيحى</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="student_birth_date">النوع</label>
-                  <select name="student_gender" id=""class='form-control'>
-                    <option value="ذكر">ذكر</option>
-                    <option value="أنثى">أنثى</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="student_birth_date"> الجنيسة</label>
-                  <input type="text" name="nationality" id=""class='form-control'placeholder="الجنسية">
-                </div>
                 @csrf
                 <div class="form-group">
                   <label for="student_phone">رقم هاتف الطالب</label>

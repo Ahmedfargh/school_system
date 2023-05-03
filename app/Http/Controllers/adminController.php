@@ -30,7 +30,8 @@ class adminController extends Controller
         $admin=DB::select("SELECT * FROM admins where name ='".$request->input("name")."' and password='".$password."'");
         if(count($admin)>0 && count($admin)<2){
             $_SESSION["user_id"]=$admin[0]->id;
-            return view("admin.index",["statictics"=>$this->statistic()]);
+            $_SESSION["user"]=$admin;
+            return view("admin.index",["statictics"=>$this->statistic(),"account"=>$admin]);
         }else{
             //var_dump($admin);
             return view("admin.login");
@@ -44,10 +45,13 @@ class adminController extends Controller
         $student->address=$request->input("student_address");
         $student->nat_id =$request->input("student_nat_id");
         $student->birth_date=$request->input("student_birth_date");
+        $student->nationality=$request->input("nationality");
+        $student->gender=$request->input("student_gender");
+        $student->relegion	=$request->input("student_relgion");
         $image_path="\\".$request->file("student_image")->move("public\\images\\");
         $student->personal_image=$image_path;
         $student->save();
-        return view("admin.edit_students");
+        return view("admin.edit_students",["account"=>$_SESSION["user"]]);
     }
     protected function search_by_name($name){
         return DB::select("SELECT * FROM students where name like '%".$name."%';");

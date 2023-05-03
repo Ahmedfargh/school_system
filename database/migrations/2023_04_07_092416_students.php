@@ -24,6 +24,8 @@ class Students extends Migration
             $table->dateTime("join_date");
             $table->string("nat_id",32)->unique();
             $table->integer("added_by");
+            $table->string("Religion",15);
+            $table->string("gender",10);
             //$table->foreign("added_by")->references("id")->on("students")->onDelete("set null")->onUpdate("cascade");
         });
     }
