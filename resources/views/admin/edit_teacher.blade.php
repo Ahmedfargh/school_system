@@ -19,36 +19,62 @@
               <h3 class="box-title"> إضافة معلم</h3>
             </div><!-- /.box-header -->
             <!-- form start -->
-            <form role="form"method="POST"enctype="multipart/form-data"action="{{route('add_students')}}">
+            <form role="form"method="POST"enctype="multipart/form-data"action="{{route('add_teacher')}}">
               <div class="box-body">
+                <h3 class='text-center'>@if (@isset($status))
+                    {{$status}}
+                    
+                @endif</h3>
                 <div class="form-group">
-                  <label for="student_name">أسم الطالب</label>
-                  <input type="text" class="form-control"name='student_name' id="student_name" placeholder="أسم الطالب"required>
+                  <label for="student_name">أسم المعلم</label>
+                  <input type="text" class="form-control"name='teacher_name' id="teacher_name" placeholder="أسم المعلم"required>
                 </div>
                 <div class="form-group">
                   <label for="student_email">البريد الألكترونى</label>
-                  <input type="email" class="form-control"name="student_email" id="student_email" placeholder="بريد الطالب"required>
+                  <input type="email" class="form-control"name="teacher_email" id="teacher_email" placeholder="بريد المعلم"required>
                 </div>
                 <div class="form-group">
                   <label for="student_address">العنوان</label>
-                  <input type="text" class="form-control"name="student_address" id="student_address" placeholder="عنوان الطالب"required>
+                  <input type="text" class="form-control"name="teacher_address" id="teacher_address" placeholder="عنوان المعلم"required>
                 </div>
                 <div class="form-group">
                   <label for="student_birth_date">تاريخ الميلاد</label>
-                  <input type="date" class="form-control"name='student_birth_date'id="student_birth_date"required>
+                  <input type="date" class="form-control"name='teacher_birth_date'id="teacher_birth_date"required>
                 </div>
                 @csrf
                 <div class="form-group">
-                  <label for="student_phone">رقم هاتف الطالب</label>
-                  <input type="phone" class="form-control"name='student_phone'id="student_phone"placeholder="رقم الهاتف"required>
+                  <label for="student_phone">رقم هاتف المعلم</label>
+                  <input type="phone" class="form-control"name='teacher_phone'id="teacher_phone"placeholder="رقم الهاتف"required>
                 </div>
                 <div class="form-group">
-                  <label for="student_nat_id">الرقم القومى</label>
-                  <input type="phone" class="form-control"name='student_nat_id'id="student_nat_id"placeholder="الرقم القومى"required>
+                  <label for="teacher_id">الرقم القومى</label>
+                  <input type="phone" class="form-control"name='teacher_nat_id'id="teacher_nat_id"placeholder="الرقم القومى"required>
                 </div>
                 <div class="form-group">
-                  <label for="student_image">أرفاق صورة الطالب</label>
-                  <input type="file"name="student_image" id="student_image"required>
+                  <label for="teacher_relegion">الرقم الديانة</label>
+                  <select name="Relegion"class='from-control' id=""required>
+                    <option value="مسلم">
+                      مسلم
+                    </option>
+                    <option value="مسيحى">
+                      مسيحى
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="teacher_gender">النوع </label>
+                  <select name="gender"class='from-control' id="gender"required>
+                    <option value="ذكر">
+                      ذكر
+                    </option>
+                    <option value="أنثى">
+                      أنثى
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="student_image">أرفاق صورة المعلم</label>
+                  <input type="file"name="teacher_image" id="teacher_image"required>
                 </div>
                 </div>
               </div><!-- /.box-body -->

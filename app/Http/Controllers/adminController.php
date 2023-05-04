@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\admin;
 use App\Models\student;
+use App\Models\teacher;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
@@ -128,5 +129,20 @@ class adminController extends Controller
             return $result;
         }
         return ["status"=>"fuck you"];
+    }
+    function add_Teacher(Request $request){
+        $student=new teacher;
+        $student->name=$request->input("teacher_name");
+        $student->email=$request->input("teacher_email");
+        $student->phone=$request->input("teacher_phone");
+        $student->address=$request->input("teacher_address");
+        $student->nat_id =$request->input("teacher_nat_id");
+        $student->birth_date=$request->input("teacher_birth_date");
+        $student->gender=$request->input("student_gender");
+        $student->relegion	=$request->input("Relegion");
+        $image_path="\\".$request->file("teacher_image")->move("public\\images\\teachers\\");
+        $student->personal_image=$image_path;
+        $student->save();
+        return view("admin.edit_teacher",["account"=>$_SESSION["user"],"status"=>"تمت عملية الأضافة بنجاح"]);
     }
 }

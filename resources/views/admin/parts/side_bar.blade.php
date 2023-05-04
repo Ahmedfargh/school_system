@@ -25,12 +25,12 @@
       </li>
       <li class="treeview">
         <a href="{{route('edit_student')}}">
-          <i class="fa fa-th"></i> الطلاب 
+          <i class="fa fa-user"></i> الطلاب 
         </a>
       </li>
       <li class="treeview">
         <a href="{{route('edit_teacher')}}">
-          <i class="fa fa-th"></i> المعلمين 
+          <i class="fa fa-user"></i> المعلمين 
         </a>
       </li>
     </ul>
