@@ -37,7 +37,50 @@ function render_search(data){
     }
     $(".student_table").html(html);
 }
+function render_search_teacher(data){
+    html="<tr><th>صورة المعلم</th><th>رقم المعلم</th><th>الرقم القومى</th><th>ديانة</th><th>تاريخ الأنضمام </th><th>تاريخ الميلاد</th><th>العنوان</th><th>البريد الألكترونى</th><th>النوع</th><th>الأسم</th><th>أكشن</th></tr>"
+    for(teacher in data){
+        console.log(teacher)
+        console.log(data[teacher])
+        html+="<tr>";
+        html+="<td>";
+        html+="<a href='"+data[teacher]["personal_image"]+"'>صورة الطالب</a>";
+        html+="</td>";
+        html+="<td>";
+        html+=data[teacher]["id"];
+        html+="</td>"
+        html+="<td>";
+        html+=data[teacher]["nat_id"];
+        html+="</td>";
+        html+="<td>";
+        html+=data[teacher]["relegion"];
+        html+="</td>";
 
+        html+="<td>";
+        html+=data[teacher]["joined_at"];
+        html+="</td>";
+        html+="<td>";
+        html+=data[teacher]["birth_date"];
+        html+="</td>";
+        html+="<td>";
+        html+=data[teacher]["address"];
+        html+="</td>";
+        html+="<td>";
+        html+=data[teacher]["email"];
+        html+="</td>";
+        html+="<td>";
+        html+=data[teacher]["gender"];
+        html+="</td>";
+        html+="<td>";
+        html+=data[teacher]["name"];
+        html+="</td>";
+        html+="<td>";
+        html+="<input type='button' class='btn btn-warning'id='delete_std_"+data[teacher]["id"]+"'value='مسح'onclick='delete_teacher("+data[teacher]["id"]+")'>";
+        html+="</td>";
+        html+="</tr>";
+    }
+    $(".student_table").html(html);
+}
 function render_staticticts(data){
     $("#student_counter").html(data["student_count"]);
     $("#admin_counter").html(data["admin_counter"]);
@@ -79,9 +122,21 @@ function search_student(key,value){
         }
     });
 }
+function search_teacher(key,value){
+    data=call_ajax_post({key:key,value:value,_token:$("input[name='_token']").val()},"/admin/ajax/search/teacher",
+    {
+        render:function(data){
+            render_search_teacher(data);
+        }
+    });
+}
 function delete_std(id){
     
-    call_ajax_post({std_id:id,_token:$("input[name='_token']").val()},"/admin/student/delete");
+    call_ajax_post({std_id:id,_token:$("input[name='_token']").val()},"/admin/student/delete",{
+        render:function(data){
+            alert("تمت عملية المسح بنجاح");
+        }
+    });
 }
 function refresh_statictics(){
     data=call_ajax_post({_token:$("input[name='_token']").val()},"/admin/get/statictics",
@@ -155,6 +210,28 @@ $("#update_std_date").on("click",function(){
         alert("لا يوجد رقم الطالب");
     }
 });
+$("#update_std_date").on("click",function(){
+    let std_id=$("#std_id").val();
+    let std_value=$("#new_std_date").val();
+    if(std_id && std_value){
+        console.log({_token:$("input[name='_token']").val(),std_id:std_id,field:"brith_date",value:std_value});
+        update_std({_token:$("input[name='_token']").val(),std_id:std_id,field:"birth_date",value:std_value},{
+            render:function(data){
+                console.log(data);
+                alert("تمت عملية التحديث بنجاح");
+            }
+        });
+    }else{
+        alert("لا يوجد رقم الطالب");
+    }
+});
+function delete_teacher(id){
+    call_ajax_post({teacher_id:id,_token:$("input[name='_token']").val()},"/admin/ajax/delete/teacher",{
+        render:function(data){
+            alert("تمت عملية المسح بنجاح");
+        }
+    });
+}
 $("#search_student_by_name").on("click",function(){
     search_student("name",$("#student_by_name").val());
 });
@@ -163,5 +240,14 @@ $("#search_student_by_address").on("click",function(){
 });
 $("#search_student_by_id").on("click",function(){
     search_student("id",$("#search_by_id").val());
+});
+$("#search_teacher_by_name").on("click",function(){
+    search_teacher("name",$("#teacher_by_name").val());
+});
+$("#search_teacher_by_address").on("click",function(){
+    search_teacher("address",$("#search_by_address").val());
+});
+$("#search_teacher_by_id").on("click",function(){
+    search_teacher("id",$("#search_by_id").val());
 });
 var statistic_refresh_time=setInterval(refresh_statictics,2000)

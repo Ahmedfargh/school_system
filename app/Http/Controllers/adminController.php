@@ -138,11 +138,43 @@ class adminController extends Controller
         $student->address=$request->input("teacher_address");
         $student->nat_id =$request->input("teacher_nat_id");
         $student->birth_date=$request->input("teacher_birth_date");
-        $student->gender=$request->input("student_gender");
+        $student->gender=$request->input("gender");
         $student->relegion	=$request->input("Relegion");
         $image_path="\\".$request->file("teacher_image")->move("public\\images\\teachers\\");
         $student->personal_image=$image_path;
         $student->save();
         return view("admin.edit_teacher",["account"=>$_SESSION["user"],"status"=>"تمت عملية الأضافة بنجاح"]);
+    }
+    protected function search_teacher_by_name($name){
+        return DB::select("SELECT * FROM teachers where name like '%".$name."%';");
+    }
+    protected function search_teacher_by_address($address){
+        return DB::select("SELECT * FROM teachers where address like '%".$address."%';");
+    }
+    protected function search_teacher_by_id($id){
+        return DB::select("SELECT * FROM teachers where id=".$id);
+    }
+
+    public function search_teacher(Request $request){
+
+        $filter=str_replace('"',"",$request->input("key"));
+        $value=str_replace('"',"",$request->input("value"));
+
+        if($filter=="name"){
+            return $this->search_teacher_by_name($value);
+        }
+        else if($filter=="address"){
+            return $this->search_teacher_by_address($value);
+        }
+        else if($filter=="id"){
+            return $this->search_teacher_by_id($value);
+        }
+        return ["status"=>$request->input("key")];
+    }
+    function delete_Teacher(Request $req){
+        $teacher=DB::table("teachers")->where("id",$req->input("teacher_id"));
+        $data_to_return=["message"=>"تم مسح المعلم "];
+        $teacher->delete();
+        return $data_to_return;
     }
 }

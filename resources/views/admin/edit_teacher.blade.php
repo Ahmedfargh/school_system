@@ -82,7 +82,7 @@
                 <button type="submit" class="btn btn-primary">أضافة</button>
               </div>
             </form>
-            @include('admin/parts/search_student')
+            @include('admin/parts/search_teacher')
             @include('admin/parts/update_student')
           </div><!-- /.box -->
         </section>
