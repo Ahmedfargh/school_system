@@ -177,4 +177,41 @@ class adminController extends Controller
         $teacher->delete();
         return $data_to_return;
     }
+    function update_teacher(Request $req){
+        $std_id=str_replace('"',"",$req->input("teacher_id"));
+        $value=str_replace('"',"",$req->input("value"));
+        $field=str_replace('"',"",$req->input("field"));
+        $teacher=teacher::find($std_id);
+        echo $field;
+        echo $value;
+        echo $std_id;
+        if($field=="name"){
+            $result=["status"=>"تمت تغيير أسم الطالب من ".$teacher->name."إلى ".$value];
+            $teacher->name=$value;
+            $teacher->save();
+            return $result;
+        }else if($field=="address"){
+            $result=["status"=>$value."إلى".$teacher->address."تم تغيير العنوان من "];
+            $teacher->address=$value;
+            $teacher->save();
+            return $result;
+        }else if($field=="email"){
+            $result=["status"=>$value."إلى ".$teacher->email."تمت عملية تغيير البريد الألكترونى من "];
+            $teacher->email=$value;
+            $teacher->save();
+            return $result;
+        }else if($field=="birth_date"){
+            $result=["status"=>$value." إلى ".$teacher->birth_date."تم تغيير تاريخ الميلاد من "];
+            $teacher->birth_date=$value;
+            $teacher->save();
+            return $result;
+        }
+        else if($field=="phone"){
+            $result=["status"=>$value." إلى ".$teacher->birth_date."تم تغيير تاريخ الميلاد من "];
+            $teacher->phone=$value;
+            $teacher->save();
+            return $result;
+        }
+        return ["status"=>"fuck you"];
+    }
 }

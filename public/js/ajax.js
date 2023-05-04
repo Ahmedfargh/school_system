@@ -149,6 +149,9 @@ function refresh_statictics(){
 function update_std(data,render){
     call_ajax_post(data,"/admin/student/update",render);
 }
+/**************************/
+/*update students sections*/
+/**************************/
 $("#update_name").on("click",function(){
     let std_id=$("#std_id").val();
     let std_value=$("#new_std_name").val();
@@ -225,13 +228,9 @@ $("#update_std_date").on("click",function(){
         alert("لا يوجد رقم الطالب");
     }
 });
-function delete_teacher(id){
-    call_ajax_post({teacher_id:id,_token:$("input[name='_token']").val()},"/admin/ajax/delete/teacher",{
-        render:function(data){
-            alert("تمت عملية المسح بنجاح");
-        }
-    });
-}
+/**********************/
+/*search students here*/
+/**********************/
 $("#search_student_by_name").on("click",function(){
     search_student("name",$("#student_by_name").val());
 });
@@ -241,6 +240,9 @@ $("#search_student_by_address").on("click",function(){
 $("#search_student_by_id").on("click",function(){
     search_student("id",$("#search_by_id").val());
 });
+/****************************/
+/*search teachers start here*/
+/****************************/
 $("#search_teacher_by_name").on("click",function(){
     search_teacher("name",$("#teacher_by_name").val());
 });
@@ -249,5 +251,78 @@ $("#search_teacher_by_address").on("click",function(){
 });
 $("#search_teacher_by_id").on("click",function(){
     search_teacher("id",$("#search_by_id").val());
+});
+function delete_teacher(id){
+    call_ajax_post({teacher_id:id,_token:$("input[name='_token']").val()},"/admin/ajax/delete/teacher",{
+        render:function(data){
+            alert("تمت عملية المسح بنجاح");
+        }
+    });
+}
+/*================================*/
+/****update teacher starts here****/
+/*================================*/
+function update_teacher(data){
+    call_ajax_post(data,"/admin/ajax/update/teacher",{
+        render:function(data){
+            alert("تمت العملية بنجاح");
+        }
+    });
+}
+$("#update_name_teacher").on("click",function(){
+    let teacher_id=$("#teacher_id").val();
+    let std_value=$("#new_teacher_name").val();
+    if(teacher_id && std_value){
+        //console.log({_token:$("input[name='_token']").val(),teacher_id:teacher_id,field:"name",value:std_value});
+        update_teacher({_token:$("input[name='_token']").val(),teacher_id:teacher_id,field:"name",value:std_value},{
+            render:function(data){
+                alert("تمت عملية التحديث بنجاح");
+            }
+        });
+    }else{
+        alert("لا يوجد رقم الطالب");
+    }
+});
+$("#update_teacher_address").on("click",function(){
+    let teacher_id=$("#teacher_id").val();
+    let std_value=$("#new_teacher_address").val();
+    if(teacher_id && std_value){
+        //console.log({_token:$("input[name='_token']").val(),teacher_id:teacher_id,field:"name",value:std_value});
+        update_teacher({_token:$("input[name='_token']").val(),teacher_id:teacher_id,field:"address",value:std_value},{
+            render:function(data){
+                alert("تمت عملية التحديث بنجاح");
+            }
+        });
+    }else{
+        alert("لا يوجد رقم الطالب");
+    }
+});
+$("#update_teacher_phone").on("click",function(){
+    let teacher_id=$("#teacher_id").val();
+    let std_value=$("#new_teacher_phone").val();
+    if(teacher_id && std_value){
+        //console.log({_token:$("input[name='_token']").val(),teacher_id:teacher_id,field:"name",value:std_value});
+        update_teacher({_token:$("input[name='_token']").val(),teacher_id:teacher_id,field:"phone",value:std_value},{
+            render:function(data){
+                alert("تمت عملية التحديث بنجاح");
+            }
+        });
+    }else{
+        alert("لا يوجد رقم الطالب");
+    }
+});
+$("#update_teacher_email").on("click",function(){
+    let teacher_id=$("#teacher_id").val();
+    let std_value=$("#new_teacher_email").val();
+    if(teacher_id && std_value){
+        //console.log({_token:$("input[name='_token']").val(),teacher_id:teacher_id,field:"name",value:std_value});
+        update_teacher({_token:$("input[name='_token']").val(),teacher_id:teacher_id,field:"email",value:std_value},{
+            render:function(data){
+                alert("تمت عملية التحديث بنجاح");
+            }
+        });
+    }else{
+        alert("لا يوجد رقم الطالب");
+    }
 });
 var statistic_refresh_time=setInterval(refresh_statictics,2000)

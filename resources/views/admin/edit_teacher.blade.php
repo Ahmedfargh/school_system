@@ -83,7 +83,7 @@
               </div>
             </form>
             @include('admin/parts/search_teacher')
-            @include('admin/parts/update_student')
+            @include('admin/parts/update_teacher')
           </div><!-- /.box -->
         </section>
         
