@@ -81,9 +81,7 @@
         
         <!-- Main content -->
         
-      </div><!-- /.content-wrapper -->
 
-    </div><!-- /.content-wrapper -->
     @include('admin/parts/copy_rights')
   </div><!-- ./wrapper -->
 

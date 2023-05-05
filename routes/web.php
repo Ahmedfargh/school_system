@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\classess_subjects;
 session_start();
 
 /*
@@ -17,7 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get("admin/index",function(){
-    return view("admin.index");
+    $adminController=new adminController();
+    return view("admin.index",["account"=>$_SESSION["user"],"statictics"=>$adminController->statistic()]);
 })->middleware("protected_against_guest_users")->name("admin_index");
 Route::get("admin/login",function(){
     return view("admin.login");
@@ -43,3 +45,6 @@ Route::post("admin/teacher/add",[adminController::class,"add_Teacher"])->name("a
 Route::any("admin/ajax/search/teacher",[adminController::class,"search_teacher"]);
 Route::any("admin/ajax/delete/teacher",[adminController::class,"delete_Teacher"]);
 Route::any("admin/ajax/update/teacher",[adminController::class,"update_teacher"]);
+Route::get("admin/edit/class",function(){
+    return view("admin.class_edit",["account"=>$_SESSION["user"]]);
+})->name("edit_classes")->middleware("protected_against_guest_users");
