@@ -46,5 +46,7 @@ Route::any("admin/ajax/search/teacher",[adminController::class,"search_teacher"]
 Route::any("admin/ajax/delete/teacher",[adminController::class,"delete_Teacher"]);
 Route::any("admin/ajax/update/teacher",[adminController::class,"update_teacher"]);
 Route::get("admin/edit/class",function(){
-    return view("admin.class_edit",["account"=>$_SESSION["user"]]);
+    $classess_subjects=new classess_subjects();
+    $data=$classess_subjects->get_class_page_Data();
+    return view("admin.class_edit",["account"=>$_SESSION["user"],"data"=>$data]);
 })->name("edit_classes")->middleware("protected_against_guest_users");

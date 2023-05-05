@@ -26,15 +26,14 @@
             <div class="col-md-3">
               <div class="box box-solid">
                 <div class="box-header with-border">
-                  <h3 class="box-title">الفصول الدراسية</h3>
+                  <h3 class="box-title">المدرسيين المشرفين </h3>
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
                     <li><a href="mailbox.html"><i class="fa fa-inbox"></i> Inbox <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
-                    <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>
-                    <li><a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-waring pull-right">65</span></a></li>
-                    <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>
+                    @foreach ($data['supervisors'] as $teacher)
+                    <li><a href="mailbox.html">{{$teacher.name}}</a></li>               
+                    @endforeach
                   </ul>
                 </div><!-- /.box-body -->
               </div><!-- /. box -->
@@ -44,9 +43,10 @@
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> Important</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Promotions</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Social</a></li>
+                    @foreach ($data["all_subjects"] as $subject)
+                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> {{$subject->subj_name	}}</a></li>
+                    @endforeach
+
                   </ul>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
