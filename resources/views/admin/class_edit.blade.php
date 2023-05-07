@@ -39,6 +39,19 @@
               </div><!-- /. box -->
               <div class="box box-solid">
                 <div class="box-header with-border">
+                  <h3 class="box-title">المدرسيين الغير مشرفيين </h3>
+                </div>
+                <div class="box-body no-padding">
+                  <ul class="nav nav-pills nav-stacked">
+                    <li class="text-center"><span class="label label-primary">{{count($data['nosupervisor'])}}</span> عدد مشرفيين الفصول </li>
+                    @foreach ($data['nosupervisor'] as $teacher)
+                    <li><a href="mailbox.html">{{$teacher->name_}}</a></li>               
+                    @endforeach
+                  </ul>
+                </div><!-- /.box-body -->
+              </div>
+              <div class="box box-solid">
+                <div class="box-header with-border">
                   <h3 class="box-title">المواد التى تدرس </h3>
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
@@ -80,8 +93,64 @@
                   <button class="btn btn-default"type='reset'><i class="fa fa-times"></i> cancel</button>
                 </div><!-- /.box-footer -->
               </div><!-- /. box -->
-            </form>
+              </form>
+              
+            </div>
+            <div class="col-md-9">
+              <div class="box box-primary container-fluid">
+                <h3 class="box-title">بحث عن فصل</h3>
+                <div class="box-body form-group">
+                  <div class="form-group">
+                    <input type="number" name="class_number" id="class_number"placeholder="رقم الفصل">
+                    <button class='btn btn-primary pull-right'id="search_class">أبحث</button>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="class_name" id="class_name">
+                    <button class='btn btn-primary pull-right'id="search_class_name"laceholder="أسم الفصل">أبحث</button>
+                  </div>
+                  <div class="form-group">
+                    <select name="super_visor" id="super_visor">
+                      @foreach ($data['nosupervisor'] as $teacher)
+                      <option value="{{$teacher->id}}">{{$teacher->name_}}(({{$teacher->email}}))</option>
+                      @endforeach
+                    </select>
+                    <button class='btn btn-primary pull-right'id="search_class_name"laceholder=" ">أبحث</button>
+                  </div>
+                </div>
+              </div>
+              <div class="box box-info container-fluid">
+                  <h3 class="box-title">جدول الفصول </h3>
+                  <div class='box-body'>
+                    <table class='table table-hover table-stribed'>
+                      <thead>
+                        <td>
+                          أسم المشرف
+                        </td>
+                        <td>
+                          أسم الفصل
+                        </td>
+                        <td>
+                          رقم الفصل
+                        </td>
+                      </thead>
+                      @foreach ($data["all_classies"] as $class)
+                          <tr>
+                            <td>
+                              {{$class->name_}}
+                            </td>
+                            <td>
+                              {{$class->class_name}}
+                            </td>
+                            <td>
+                              {{$class->class_id}}
+                            </td>
+                          </tr>
+                      @endforeach
+                    </table>
+                  </div>
+              </div>
             </div><!-- /.col -->
+            
           </div><!-- /.row -->
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
