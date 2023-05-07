@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\class_model;
+
 class classess_subjects extends Controller
 {
     //
@@ -23,5 +25,13 @@ class classess_subjects extends Controller
             "nosupervisor"=>$this->get_all_non_supervisors()
         ];
     }
-
+    public function add_classs(Request $req){
+        $class=new class_model;
+        $class->class=$req->input("class_label");
+        $class->supervisor =$req->input("teacher_id");
+        $class->save();
+        $data=$this->get_class_page_Data();
+        $data["status"]="تمت عملية أضافة الفصل بنجاح";
+        return view("admin.class_edit",["account"=>$_SESSION["user"],"data"=>$data]);
+    }
 }

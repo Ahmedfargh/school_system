@@ -50,3 +50,4 @@ Route::get("admin/edit/class",function(){
     $data=$classess_subjects->get_class_page_Data();
     return view("admin.class_edit",["account"=>$_SESSION["user"],"data"=>$data]);
 })->name("edit_classes")->middleware("protected_against_guest_users");
+Route::POST("admin/edit/class/add",[classess_subjects::class,"add_classs"])->middleware("protected_against_guest_users")->name("add_class");
