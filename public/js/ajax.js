@@ -1,3 +1,4 @@
+
 function serialze_data(data){
     return JSON.parse(JSON.stringify(data));
 }
@@ -323,6 +324,64 @@ $("#update_teacher_email").on("click",function(){
         });
     }else{
         alert("لا يوجد رقم الطالب");
+    }
+});
+/********************************************/
+/********class searching starts here*********/
+/********************************************/
+function render_search_classies(data){
+    let html="<thead><td>أسم المشرف </td><td>أسم الفصل</td><td>رقم الفصل </td></thead>";
+    for (const key in data) {
+        html+="<tr>";
+        html+="<td>";
+        html+=data[key]["name_"];
+        html+="</td>";
+        html+="<td>";
+        html+=data[key]["class_name"];
+        html+="</td>";
+        html+="<td>";
+        html+=data[key]["class_id"];
+        html+="</td>";
+        html+="</tr>"
+    }
+    $("#class_searcj_result").html(html);
+}
+function search(data){
+    call_ajax_post(data,"/admin/class/search",{
+        render:function(data){
+            render_search_classies(data);
+        }
+    });
+}
+$("#search_class_id").on("click",function(){
+    let class_id=$("#class_number").val();
+    let key="id";
+    if(class_id){
+        let data={key:key,value:class_id,_token:$("input[name='_token']").val()};
+        search(data);
+    }else{
+        alert("يوجد خطأ فى المدخلات");
+    }
+});
+$("#search_class_name").on("click",function(){
+    let class_=$("#class_name").val();
+    let key="name";
+    if(class_){
+        let data={key:key,value:class_,_token:$("input[name='_token']").val()};
+        search(data);
+    }else{
+        alert("يوجد خطأ فى المدخلات");
+    }
+});
+$("#search_class_name").on("click",function(){
+    let supervisor_name=$("#super_visor").val();
+    let key="super_visor";
+    alert("go to hell");
+    if(supervisor_name){
+        let data={key:key,value:supervisor_name,_token:$("input[name='_token']").val()};
+        search(data);
+    }else{
+        alert("يوجد خطأ فى المدخلات");
     }
 });
 var statistic_refresh_time=setInterval(refresh_statictics,2000)

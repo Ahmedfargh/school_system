@@ -102,26 +102,26 @@
                 <div class="box-body form-group">
                   <div class="form-group">
                     <input type="number" name="class_number" id="class_number"placeholder="رقم الفصل">
-                    <button class='btn btn-primary pull-right'id="search_class">أبحث</button>
+                    <button class='btn btn-primary pull-right'id="search_class_id">أبحث</button>
                   </div>
                   <div class="form-group">
                     <input type="text" name="class_name" id="class_name">
-                    <button class='btn btn-primary pull-right'id="search_class_name"laceholder="أسم الفصل">أبحث</button>
+                    <button class='btn btn-primary pull-right'id="search_class_name">أبحث</button>
                   </div>
                   <div class="form-group">
                     <select name="super_visor" id="super_visor">
-                      @foreach ($data['nosupervisor'] as $teacher)
-                      <option value="{{$teacher->id}}">{{$teacher->name_}}(({{$teacher->email}}))</option>
+                      @foreach ($data['supervisors'] as $teacher)
+                      <option value="{{$teacher->id}}">{{$teacher->name}}(({{$teacher->email}}))</option>
                       @endforeach
                     </select>
-                    <button class='btn btn-primary pull-right'id="search_class_name"laceholder=" ">أبحث</button>
+                    <button class='btn btn-primary pull-right'id="search_class_name">أبحث</button>
                   </div>
                 </div>
               </div>
               <div class="box box-info container-fluid">
                   <h3 class="box-title">جدول الفصول </h3>
                   <div class='box-body'>
-                    <table class='table table-hover table-stribed'>
+                    <table class='table table-hover table-stribed'id="class_searcj_result">
                       <thead>
                         <td>
                           أسم المشرف

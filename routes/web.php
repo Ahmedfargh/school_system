@@ -51,3 +51,4 @@ Route::get("admin/edit/class",function(){
     return view("admin.class_edit",["account"=>$_SESSION["user"],"data"=>$data]);
 })->name("edit_classes")->middleware("protected_against_guest_users");
 Route::POST("admin/edit/class/add",[classess_subjects::class,"add_classs"])->middleware("protected_against_guest_users")->name("add_class");
+Route::any("admin/class/search",[classess_subjects::class,"Search"]);

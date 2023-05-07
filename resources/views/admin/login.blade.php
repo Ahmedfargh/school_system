@@ -27,7 +27,7 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
-        <form action="{{route('login_do')}}" method="post">
+        <form action="{{route('login_do')}}" method="POST">
           @csrf
           <div class="form-group has-feedback">
             <input type="text" class="form-control"name='name' placeholder="الأسم"/>
