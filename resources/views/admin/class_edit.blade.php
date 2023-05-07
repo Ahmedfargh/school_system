@@ -32,7 +32,7 @@
                   <ul class="nav nav-pills nav-stacked">
                     <li><a href="mailbox.html"><i class="fa fa-inbox"></i> Inbox <span class="label label-primary pull-right">12</span></a></li>
                     @foreach ($data['supervisors'] as $teacher)
-                    <li><a href="mailbox.html">{{$teacher.name}}</a></li>               
+                    <li><a href="mailbox.html">{{$teacher->name}}</a></li>               
                     @endforeach
                   </ul>
                 </div><!-- /.box-body -->
@@ -58,10 +58,14 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <div class="form-group">
-                    <input class="form-control" placeholder="To:"/>
+                    <input type="text"name='class_label' class="form-control" placeholder="عنوان الفصل"/>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" placeholder="Subject:"/>
+                    <select name='teacher_id'class='form-control'placeholder='أسم المعلم'>
+                      @foreach ($data['nosupervisor'] as $teacher)
+                          <option value="{{$teacher->id}}">{{$teacher->name_}}(({{$teacher->email}}))</option>
+                      @endforeach
+                    </select>
                   </div>
                   <div class="form-group">
                     <textarea id="compose-textarea" class="form-control" style="height: 300px">
