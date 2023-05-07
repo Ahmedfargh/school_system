@@ -55,4 +55,22 @@ class classess_subjects extends Controller
             return $this->search_by_super_name($value);
         }
     }
+    public function delete_class(Request $req){
+        $class=class_model::find($req->input("class_id"));
+        $class->delete();
+        return ["status"=>"تمت عملية حذف الفصل بنجاح"];
+    }
+    public function update_class(Request $req){
+        $class=class_model::find($req->input("class_id"));
+        if($req->input("field")=="name"){
+            $class->class=$req->input("value");
+            $class->save();
+            return ["status"=>"تمت عملية التحديث بنجاح"];
+        }else if($req->input("field")=="super_visor"){
+            $class->supervisor=$req->input("value");
+            $class->save();
+            return ["status"=>"تمت عملية التحديث بنجاح"];
+        }
+        return ["status"=>"لم تتم عملية التحديث بنجاح"];
+    }
 }

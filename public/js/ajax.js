@@ -329,6 +329,14 @@ $("#update_teacher_email").on("click",function(){
 /********************************************/
 /********class searching starts here*********/
 /********************************************/
+function delete_class(class_id){
+    let data={class_id:class_id,_token:$("input[name='_token']").val()};
+    call_ajax_post(data,"/admin/class/delete",{
+        render:function(data){
+            alert("تمت عملية التحديث بنجاح");
+        }
+    });
+}
 function render_search_classies(data){
     let html="<thead><td>أسم المشرف </td><td>أسم الفصل</td><td>رقم الفصل </td></thead>";
     for (const key in data) {
@@ -341,6 +349,9 @@ function render_search_classies(data){
         html+="</td>";
         html+="<td>";
         html+=data[key]["class_id"];
+        html+="</td>";
+        html+="<td>";
+        html+="<button class='btn btn-danger'onclick='delete_class("+data[key]["class_id"]+")'>مسح</button>";
         html+="</td>";
         html+="</tr>"
     }
@@ -373,15 +384,46 @@ $("#search_class_name").on("click",function(){
         alert("يوجد خطأ فى المدخلات");
     }
 });
-$("#search_class_name").on("click",function(){
+$("#search_class_super_name").on("click",function(){
     let supervisor_name=$("#super_visor").val();
     let key="super_visor";
-    alert("go to hell");
     if(supervisor_name){
         let data={key:key,value:supervisor_name,_token:$("input[name='_token']").val()};
         search(data);
     }else{
         alert("يوجد خطأ فى المدخلات");
+    }
+});
+/******************************************/
+/***********update classies here***********/
+/******************************************/
+function ready_for_update(class_data){
+    $("#class_under_update").val(class_data["class_id"]);
+    $("#new_class_name").val(class_data["class_name"]);
+}
+function update_class(data){
+    call_ajax_post(data,"/admin/update/class",{
+        render:function(data){
+            alert("تمت عملية التحديث");
+        }
+    });
+}
+$("#update_class_supervisor").on("click",function(){
+    let class_super_visor=$("#new_class_super_visor").val();
+    let class_id=$("#class_under_update").val();
+    if(class_id){
+        update_class({class_id:class_id,value:class_super_visor,field:"super_visor",_token:$("input[name='_token']").val()});
+    }else{
+        alert("لم يتم أختيار الفصل لتحديث");
+    }
+});
+$("#update_class_name").on("click",function(){
+    let class_name=$("#new_class_name").val();
+    let class_id=$("#class_under_update").val();
+    if(class_id){
+        update_class({class_id:class_id,value:class_name,field:"name",_token:$("input[name='_token']").val()});
+    }else{
+        alert("لم يتم أختيار الفصل لتحديث");
     }
 });
 var statistic_refresh_time=setInterval(refresh_statictics,2000)

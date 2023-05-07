@@ -52,3 +52,5 @@ Route::get("admin/edit/class",function(){
 })->name("edit_classes")->middleware("protected_against_guest_users");
 Route::POST("admin/edit/class/add",[classess_subjects::class,"add_classs"])->middleware("protected_against_guest_users")->name("add_class");
 Route::any("admin/class/search",[classess_subjects::class,"Search"]);
+Route::any("admin/class/delete",[classess_subjects::class,"delete_class"]);
+Route::any("admin/update/class",[classess_subjects::class,"update_class"]);
