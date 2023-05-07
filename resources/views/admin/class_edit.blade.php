@@ -32,7 +32,7 @@
                   <ul class="nav nav-pills nav-stacked">
                     <li class="text-center"><span class="label label-primary">{{count($data['supervisors'])}}</span> عدد مشرفيين الفصول </li>
                     @foreach ($data['supervisors'] as $teacher)
-                    <li><a href="mailbox.html">{{$teacher->name}}</a></li>               
+                    <li><a href="#">{{$teacher->name}}</a></li>               
                     @endforeach
                   </ul>
                 </div><!-- /.box-body -->
@@ -45,7 +45,7 @@
                   <ul class="nav nav-pills nav-stacked">
                     <li class="text-center"><span class="label label-primary">{{count($data['nosupervisor'])}}</span> عدد مشرفيين الفصول </li>
                     @foreach ($data['nosupervisor'] as $teacher)
-                    <li><a href="mailbox.html">{{$teacher->name_}}</a></li>               
+                    <li><a href="#">{{$teacher->name_}}</a></li>               
                     @endforeach
                   </ul>
                 </div><!-- /.box-body -->
