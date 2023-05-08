@@ -426,4 +426,24 @@ $("#update_class_name").on("click",function(){
         alert("لم يتم أختيار الفصل لتحديث");
     }
 });
+/*******************************************/
+/******search subjects is from here*********/
+/*******************************************/
+function search_subject(data){
+    console.log(data);
+    call_ajax_post(data,"/admin/search/subject/",{
+        render:function(data){
+            console.log(data);
+        }
+    });
+}
+$("#search_subject_name").on("click",function(){
+    let subject_name=$("#subj_name").val();
+    let field="name";
+    if(subject_name){
+        search_subject({field:"name",value:subject_name,_token:$("input[name='_token']").val()});
+    }else{
+        alert("أدخل أسم المادة");
+    }
+});
 var statistic_refresh_time=setInterval(refresh_statictics,2000)

@@ -60,3 +60,4 @@ Route::get("admin/edit/subjects",function(){
     return view("admin.subject_edit",["account"=>$_SESSION["user"],"data"=>$data]);
 })->name("edit_subjects")->middleware("protected_against_guest_users");
 Route::POST("admin/edit/add/subject",[classess_subjects::class,"add_subject"])->name("add_class")->middleware("protected_against_guest_users");
+Route::any("/admin/search/subject/",[classess_subjects::class,"search_subject"]);

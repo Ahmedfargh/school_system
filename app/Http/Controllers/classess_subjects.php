@@ -90,4 +90,19 @@ class classess_subjects extends Controller
         $data["status"]="تمت العملية بنجاح";
         return view("admin.subject_edit",["account"=>$_SESSION["user"],"data"=>$data]);
     }
+    public function search_subject_by_name($value){
+        return DB::select("SELECT * FROM subject where subj_name like '%".$value."%'");
+    }
+    public function search_subject_by_desc($value){
+        return DB::select("SELECT * FROM subject where description like '%".$value."%'");
+    }
+    public function search_subject(Request $req){
+        
+        if($req->input("field")=="name"){
+            return $this->search_subject_by_name($req->input("value"));
+        }else if($req->input("field")=="description"){
+            return $this->search_subject_by_desc($req->input("value"));
+        }
+        return ["status"=>"fuck","field"=>$req->input("field")];
+    }
 }

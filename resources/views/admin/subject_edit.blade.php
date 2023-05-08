@@ -99,11 +99,11 @@
             </div>
             <div class="col-md-9">
               <div class="box box-primary container-fluid">
-                <h3 class="box-title">بحث عن فصل</h3>
+                <h3 class="box-title">البحث عن المادة</h3>
                 <div class="box-body form-group">
                   <div class="form-group">
-                    <input type="number" name="class_number" id="class_number"placeholder="رقم الفصل">
-                    <button class='btn btn-primary pull-right'id="search_class_id">أبحث</button>
+                    <input type="text" name="subject" id="subj_name"placeholder="أسم المادة">
+                    <button class='btn btn-primary pull-right'id="search_subject_name">أبحث</button>
                   </div>
                   <div class="form-group">
                     <input type="text" name="class_name" id="class_name">
@@ -120,36 +120,36 @@
                 </div>
               </div>
               <div class="box box-info container-fluid">
-                  <h3 class="box-title">جدول الفصول </h3>
+                  <h3 class="box-title">جدول المواد </h3>
                   <div class='box-body'>
                     <table class='table table-hover table-stribed'id="class_searcj_result">
                       <thead>
                         <td>
-                          أسم المشرف
+                          وصف المادة 
                         </td>
                         <td>
-                          أسم الفصل
+                          أسم المادة 
                         </td>
                         <td>
-                          رقم الفصل
+                          رقم المادة 
                         </td>
                       </thead>
-                      @foreach ($data["all_classies"] as $class)
+                      @foreach ($data["all_subjects"] as $subj)
                           <tr>
                             <td>
-                              {{$class->name_}}
+                              {{$subj->description}}
                             </td>
                             <td>
-                              {{$class->class_name}}
+                              {{$subj->subj_name}}
                             </td>
                             <td>
-                              {{$class->class_id}}
+                              {{$subj->subj_id}}
                             </td>
                             <td>
-                              <button class='btn btn-danger'onclick="delete_class({{$class->class_id}})">مسح</button>
+                              <button class='btn btn-danger'onclick="delete_class({{$subj->subj_id}})">مسح</button>
                             </td>
                             <td>
-                              <button class="btn btn-primary"onclick="ready_for_update({class_id:{{$class->class_id}},class_name:'{{$class->class_name}}'})">تجهيز لتحديث</button>
+                              <button class="btn btn-primary"onclick="ready_for_update({class_id:{{$subj->subj_id}},class_name:'{{$subj->subj_name}}'})">تجهيز لتحديث</button>
                             </td>
                           </tr>
                       @endforeach
