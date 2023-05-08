@@ -54,3 +54,9 @@ Route::POST("admin/edit/class/add",[classess_subjects::class,"add_classs"])->mid
 Route::any("admin/class/search",[classess_subjects::class,"Search"]);
 Route::any("admin/class/delete",[classess_subjects::class,"delete_class"]);
 Route::any("admin/update/class",[classess_subjects::class,"update_class"]);
+Route::get("admin/edit/subjects",function(){
+    $classess_subjects=new classess_subjects();
+    $data=$classess_subjects->get_class_page_Data();
+    return view("admin.subject_edit",["account"=>$_SESSION["user"],"data"=>$data]);
+})->name("edit_subjects")->middleware("protected_against_guest_users");
+Route::POST("admin/edit/add/subject",[classess_subjects::class,"add_subject"])->name("add_class")->middleware("protected_against_guest_users");

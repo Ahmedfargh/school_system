@@ -20,23 +20,26 @@
       </li>
       <li class="active treeview">
         <a href="{{route('admin_index')}}">
-          <i class="fa fa-dashboard"></i> <span>لوحة التحكم</span> <i class="fa fa-angle-left pull-right"></i>
+          لوحة التحكم
         </a>
       </li>
       <li class="treeview">
         <a href="{{route('edit_student')}}">
-          <i class="fa fa-user"></i> الطلاب 
+           الطلاب 
         </a>
       </li>
       <li class="treeview">
         <a href="{{route('edit_teacher')}}">
-          <i class="fa fa-user"></i> المعلمين 
+          المعلمين 
         </a>
       </li>
       <li class="treeview">
         <a href="{{route('edit_classes')}}">
-          <i class="fa fa-user"></i> الفصول الدراسية 
+           الفصول الدراسية 
         </a>
+      </li>
+      <li class='treeview'>
+        <a href="{{route('edit_subjects')}}"><li class='fa fa-user'></li>المواد الدراسية</a>
       </li>
     </ul>
   </section>
