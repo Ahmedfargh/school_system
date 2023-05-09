@@ -91,8 +91,9 @@ function render_staticticts(data){
 
 }
 function call_ajax_post(sentdata,url,render){
+   
     $.ajax({
-        type:"POST",
+        type:"get",
         url:url,
         data:sentdata,
         success:function(data){
@@ -437,11 +438,11 @@ function search_subject(data){
         }
     });
 }
-$("#search_subject_name").on("click",function(){
+$("#search_subj_name").on("click",function(){
     let subject_name=$("#subj_name").val();
     let field="name";
     if(subject_name){
-        search_subject({field:"name",value:subject_name,_token:$("input[name='_token']").val()});
+        search_subject({field_:field,value_:subject_name,_token:$("input[name='_token']").val()});
     }else{
         alert("أدخل أسم المادة");
     }

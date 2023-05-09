@@ -101,13 +101,10 @@
               <div class="box box-primary container-fluid">
                 <h3 class="box-title">البحث عن المادة</h3>
                 <div class="box-body form-group">
+                  
                   <div class="form-group">
-                    <input type="text" name="subject" id="subj_name"placeholder="أسم المادة">
-                    <button class='btn btn-primary pull-right'id="search_subject_name">أبحث</button>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="class_name" id="class_name">
-                    <button class='btn btn-primary pull-right'id="search_class_name">أبحث</button>
+                    <input type="text" name="class_name" id="subj_name">
+                    <button class='btn btn-primary pull-right'id="search_subj_name">أبحث</button>
                   </div>
                   <div class="form-group">
                     <select name="super_visor" id="super_visor">

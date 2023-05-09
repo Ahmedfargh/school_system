@@ -96,13 +96,13 @@ class classess_subjects extends Controller
     public function search_subject_by_desc($value){
         return DB::select("SELECT * FROM subject where description like '%".$value."%'");
     }
-    public function search_subject(Request $req){
-        
-        if($req->input("field")=="name"){
-            return $this->search_subject_by_name($req->input("value"));
-        }else if($req->input("field")=="description"){
-            return $this->search_subject_by_desc($req->input("value"));
+    public function search_subject(Request $request){
+        echo $request->input("field_");
+        if($request->input("field_")=="name"){
+            return $this->search_subject_by_name($request->input("value_"));
+        }else if($request->input("field_")=="description"){
+            return $this->search_subject_by_desc($request->input("value_"));
         }
-        return ["status"=>"fuck","field"=>$req->input("field")];
+        return ["status"=>"fuck","field"=>$request->input("field_"),"value"=>$request->input("value_")];
     }
 }
