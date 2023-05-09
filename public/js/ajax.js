@@ -430,11 +430,28 @@ $("#update_class_name").on("click",function(){
 /*******************************************/
 /******search subjects is from here*********/
 /*******************************************/
+function render_search(data){
+    let html="<thead><td>وصف المادة </td><td>أسم المادة </td><td>رقم المادة </td></thead>";
+    for (key in data) {
+        html+="<tr>";
+        html+="<td>";
+        html+=data[key]["description"];
+        html+="</td>";
+        html+="<td>";
+        html+=data[key]["subj_name"];
+        html+="</td>";
+        html+="<td>";
+        html+=data[key]["subj_id"];
+        html+="</td>";
+        html+="</tr>";
+    }
+    $("#subject_searcj_result").html(html);
+}
 function search_subject(data){
     console.log(data);
     call_ajax_post(data,"/admin/search/subject/",{
         render:function(data){
-            console.log(data);
+            render_search(data);
         }
     });
 }
@@ -445,6 +462,38 @@ $("#search_subj_name").on("click",function(){
         search_subject({field_:field,value_:subject_name,_token:$("input[name='_token']").val()});
     }else{
         alert("أدخل أسم المادة");
+    }
+});
+$("#search_subj_desc").on("click",function(){
+    let subject_desc=$("#subj_desc_in").val();
+    let field="description";
+    if(subject_desc){
+        search_subject({field_:field,value_:subject_desc,_token:$("input[name='_token']").val()});
+    }else{
+        alert("أدخل أسم المادة");
+    }
+});
+//***********************************
+//update subjects go through here****
+//**********************************
+function render_update_subject(data){
+    alert("تمت عملية التحديث بنجاح");
+}
+function update_subject(data){
+    call_ajax_post(data,"/admin/subject/update",{
+        render:function(data){
+            render_update_subject(data);
+        }
+    });
+}
+$("#update_subject_name").on("click",function(){
+    let subject_name=$("#subject_name").val();
+    let id=$("#subject_update").val();
+    let field="name";
+    if(id && subject_name){
+        update_subject({field:field,value:subject_name,id:id,_token:$("input[name='_token']").val()});
+    }else{
+        alert("هناك خطأ فى المدخلات");
     }
 });
 var statistic_refresh_time=setInterval(refresh_statictics,2000)

@@ -15,7 +15,7 @@ class Matrials extends Migration
     {
         //
         Schema::create("subject",function(Blueprint $table){
-            $table->bigIncrements("subj_id");
+            $table->bigIncrements("id");
             $table->string("subj_name",32);
             $table->string("description",1000);
             $table->integer("added_by");

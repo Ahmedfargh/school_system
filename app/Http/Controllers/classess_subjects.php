@@ -97,12 +97,25 @@ class classess_subjects extends Controller
         return DB::select("SELECT * FROM subject where description like '%".$value."%'");
     }
     public function search_subject(Request $request){
-        echo $request->input("field_");
         if($request->input("field_")=="name"){
             return $this->search_subject_by_name($request->input("value_"));
         }else if($request->input("field_")=="description"){
             return $this->search_subject_by_desc($request->input("value_"));
         }
         return ["status"=>"fuck","field"=>$request->input("field_"),"value"=>$request->input("value_")];
+    }
+    public function update_subject(Request $req){
+        $subj=subject::find($req->input("id"));
+        
+        if($req->input("field")=="name"){
+            $subj->subj_name=$req->input("value");
+            $subj->save();
+            return ["status"=>"تمت العملية بنجاح"];
+        }else if ($req->input("field")=="description"){
+            $subj->description=$req->input("value");
+            $subj->save();
+            return ["status"=>"تمت العملية بنجاح"];
+        }
+        return ["status"=>"لم تتم العملية بنجاح"];
     }
 }

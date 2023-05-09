@@ -103,23 +103,19 @@
                 <div class="box-body form-group">
                   
                   <div class="form-group">
-                    <input type="text" name="class_name" id="subj_name">
+                    <input type="text" name="class_name"class='form-control' id="subj_name">
                     <button class='btn btn-primary pull-right'id="search_subj_name">أبحث</button>
                   </div>
-                  <div class="form-group">
-                    <select name="super_visor" id="super_visor">
-                      @foreach ($data['supervisors'] as $teacher)
-                      <option value="{{$teacher->id}}">{{$teacher->name}}(({{$teacher->email}}))</option>
-                      @endforeach
-                    </select>
-                    <button class='btn btn-primary pull-right'id="search_class_super_name">أبحث</button>
+                  <div class='form-group'>
+                    <textarea name="subject_desc"class='form-control' id="subj_desc_in"cols="50"></textarea>
+                    <button class='btn btn-primary pull-right'id="search_subj_desc">أبحث</button>
                   </div>
                 </div>
               </div>
               <div class="box box-info container-fluid">
                   <h3 class="box-title">جدول المواد </h3>
                   <div class='box-body'>
-                    <table class='table table-hover table-stribed'id="class_searcj_result">
+                    <table class='table table-hover table-stribed'id="subject_searcj_result">
                       <thead>
                         <td>
                           وصف المادة 
@@ -157,19 +153,15 @@
                 <h3 class="box-title">تحديث الفصول  </h3>
                 <div class='box-body'>
                   <div class="form-group">
-                    <input type="text" name="" id="class_under_update"placeholder="رقم الفصل تحت التحديث"disabled>
+                    <input type="number" class='form-control' name="" id="subject_update"placeholder="رقم المادة تحت التحديث">
                   </div>
                   <div class="form-group">
-                    <select name="super_visor" id="new_class_super_visor">
-                      @foreach ($data['nosupervisor'] as $teacher)
-                      <option value="{{$teacher->id}}">{{$teacher->name_}}(({{$teacher->email}}))</option>
-                      @endforeach
-                    </select>
-                    <button class='btn btn-primary pull-right'id="update_class_supervisor">تحديث</button>
+                    <input type="text"class='form-control' id="subject_name"placeholder="أسم المادة">
+                    <button class='btn btn-primary pull-right'id="update_subject_name">تحديث</button>
                   </div>
                   <div class="form-group">
-                    <input type="text" name="" id="new_class_name"class='form-control'>
-                    <button class='btn btn-primary pull-right'id="update_class_name">تحديث</button>
+                    <textarea name=""class='form-control' id="subject_desc" cols="50" rows="10"></textarea>
+                    <button class='btn btn-primary pull-right'id="update_subject_desc">تحديث</button>
                   </div>
                 </div>
               </div>
