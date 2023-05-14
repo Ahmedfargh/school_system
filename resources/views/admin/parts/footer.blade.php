@@ -39,5 +39,6 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{asset('dist/js/demo.js')}}" type="text/javascript"></script>
     <script src="{{asset('js/ajax.js')}}"></script>
+    <script src="{{asset('js/fetch objects.js')}}"></script>
   </body>
 </html>

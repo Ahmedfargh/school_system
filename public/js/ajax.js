@@ -2,7 +2,9 @@
 function serialze_data(data){
     return JSON.parse(JSON.stringify(data));
 }
-function render_search(data){
+function render_search_student(data){
+
+    console.log(data);
     html="<tr><th>صورة الطالب</th><th>رقم الطالب</th><th>الرقم القومى</th><th>تاريخ الأنضمام </th><th>تاريخ الميلاد</th><th>العنوان</th><th>البريد الألكترونى</th><th>الأسم</th><th>أكشن</th></tr>"
     for(student in data){
         console.log(student)
@@ -99,10 +101,11 @@ function call_ajax_post(sentdata,url,render){
         success:function(data){
             data=serialze_data(data);
             render.render(data);
+            console.log("will done");
         },
         error:function(data){
             data=serialze_data(data);
-           
+            alert("big error");
             render.render(data);
         },
         statusCode:{
@@ -117,10 +120,11 @@ function call_ajax_post(sentdata,url,render){
     //return data_to_return;
 }
 function search_student(key,value){
+
     data=call_ajax_post({key:key,value:value,_token:$("input[name='_token']").val()},"/admin/ajax/search/student",
     {
         render:function(data){
-            render_search(data);
+            render_search_student(data);
         }
     });
 }
