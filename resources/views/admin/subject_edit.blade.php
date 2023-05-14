@@ -136,13 +136,13 @@
                               {{$subj->subj_name}}
                             </td>
                             <td>
-                              {{$subj->subj_id}}
+                              {{$subj->id}}
                             </td>
                             <td>
-                              <button class='btn btn-danger'onclick="delete_class({{$subj->subj_id}})">مسح</button>
+                              <button class='btn btn-danger'onclick="delete_class({{$subj->id}})">مسح</button>
                             </td>
                             <td>
-                              <button class="btn btn-primary"onclick="ready_for_update({class_id:{{$subj->subj_id}},class_name:'{{$subj->subj_name}}'})">تجهيز لتحديث</button>
+                              <button class="btn btn-primary"onclick="ready_for_update({class_id:{{$subj->id}},class_name:'{{$subj->subj_name}}'})">تجهيز لتحديث</button>
                             </td>
                           </tr>
                       @endforeach
@@ -150,7 +150,7 @@
                   </div>
               </div>
               <div class="box box-info container-fluid">
-                <h3 class="box-title">تحديث الفصول  </h3>
+                <h3 class="box-title">تحديث المواد  </h3>
                 <div class='box-body'>
                   <div class="form-group">
                     <input type="number" class='form-control' name="" id="subject_update"placeholder="رقم المادة تحت التحديث">

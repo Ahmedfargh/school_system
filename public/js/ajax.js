@@ -496,4 +496,14 @@ $("#update_subject_name").on("click",function(){
         alert("هناك خطأ فى المدخلات");
     }
 });
+$("#update_subject_desc").on("click",function(){
+    let subject_name=$("#subject_desc").val();
+    let id=$("#subject_update").val();
+    let field="description";
+    if(id && subject_name){
+        update_subject({field:field,value:subject_name,id:id,_token:$("input[name='_token']").val()});
+    }else{
+        alert("هناك خطأ فى المدخلات");
+    }
+});
 var statistic_refresh_time=setInterval(refresh_statictics,2000)
