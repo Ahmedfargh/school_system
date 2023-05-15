@@ -122,6 +122,7 @@ class classess_subjects extends Controller
         $teachs=new teachs;
         $teachs->teacher_id=$req->input("teacher_id");
         $teachs->subj_id=$req->input("subj_id");
+        $teachs->save();
         return ["status"=>"تمت العملية بنجاح"];
     }
 }

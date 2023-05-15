@@ -83,7 +83,7 @@
                       </select>
                     </li>
                     <li>
-                      <select name="" id="subject_id"class='form-control'>
+                      <select name="" id="subject_id_to_assign"class='form-control'>
                         @foreach ($data["all_subjects"] as $subj)
                           <option value="{{$subj->id}}">{{$subj->subj_name}}</option>
                         @endforeach

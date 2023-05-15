@@ -121,7 +121,7 @@ function call_ajax_post(sentdata,url,render){
 }
 function search_student(key,value){
 
-    data=call_ajax_post({key:key,value:value,_token:$("input[name='_token']").val()},"/admin/ajax/search/student",
+    data=call_ajax_post({key:key,value:value,_token:$("[inputname='_token']").val()},"/admin/ajax/search/student",
     {
         render:function(data){
             render_search_student(data);
