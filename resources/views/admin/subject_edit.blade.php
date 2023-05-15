@@ -66,6 +66,33 @@
                   </ul>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title"> تعيين مدرس لمادة</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body ">
+                  <ul class="nav nav-pills nav-stacked ">
+                    <li>
+                      <select name=""class='form-control' id="teacher_id_to_assign">
+                        @foreach ($data["supervisors"] as $item)
+                            <option value="{{$item->id}}">{{$item->name}}</option>
+                        @endforeach
+                        @foreach ($data["nosupervisor"] as $item)
+                            <option value="{{$item->id}}">{{$item->name_}}</option>
+                        @endforeach
+                      </select>
+                    </li>
+                    <li>
+                      <select name="" id="subject_id"class='form-control'>
+                        @foreach ($data["all_subjects"] as $subj)
+                          <option value="{{$subj->id}}">{{$subj->subj_name}}</option>
+                        @endforeach
+                      </select>
+                    </li>
+                    <li><input type="button"class='btn btn-success'id="assign_teacher_to_subject"value="تعيين"></li>
+                  </ul>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
             </div><!-- /.col -->
             <div class="col-md-9">
               <form action="{{route('add_class')}}" method="post">

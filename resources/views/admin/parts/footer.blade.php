@@ -40,5 +40,6 @@
     <script src="{{asset('dist/js/demo.js')}}" type="text/javascript"></script>
     <script src="{{asset('js/ajax.js')}}"></script>
     <script src="{{asset('js/fetch objects.js')}}"></script>
+    <script src="{{asset('js/assigning apis.js')}}"></script>
   </body>
 </html>

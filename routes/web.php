@@ -62,3 +62,4 @@ Route::get("admin/edit/subjects",function(){
 Route::POST("admin/edit/add/subject",[classess_subjects::class,"add_subject"])->name("add_class")->middleware("protected_against_guest_users");
 Route::any("admin/search/subject/",[classess_subjects::class,"search_subject"]);
 Route::any("admin/subject/update",[classess_subjects::class,"update_subject"]);
+Route::any("admin/teacher/assign_subject",[classess_subjects::class,"assign_subject_to_teacher"]);

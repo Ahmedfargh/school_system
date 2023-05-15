@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\class_model;
 use App\Models\subject;
+use App\Models\teachs;
 class classess_subjects extends Controller
 {
     //
@@ -106,7 +107,6 @@ class classess_subjects extends Controller
     }
     public function update_subject(Request $req){
         $subj=subject::find($req->input("id"));
-        
         if($req->input("field")=="name"){
             $subj->subj_name=$req->input("value");
             $subj->save();
@@ -117,5 +117,11 @@ class classess_subjects extends Controller
             return ["status"=>"تمت العملية بنجاح"];
         }
         return ["status"=>"لم تتم العملية بنجاح"];
+    }
+    public function assign_subject_to_teacher(Request $req){
+        $teachs=new teachs;
+        $teachs->teacher_id=$req->input("teacher_id");
+        $teachs->subj_id=$req->input("subj_id");
+        return ["status"=>"تمت العملية بنجاح"];
     }
 }
