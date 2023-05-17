@@ -6,12 +6,21 @@ use App\Models\student;
 use App\Models\teacher;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\study;
+use App\Models\attend;
 class adminController extends Controller
 {
     //
     private function secure($text){
         return $text;
+    }
+    protected function get_All_classies(){
+        return DB::select("select * from classies");
+    }
+    public function get_important_data(){
+        $data=[];
+        $data["classies"]=$this->get_All_classies();
+        return $data;
     }
     public function register(Request $request){
         if($request->input("admin_password")===$request->input("confirm_password")){
@@ -52,7 +61,12 @@ class adminController extends Controller
         $image_path="\\".$request->file("student_image")->move("public\\images\\");
         $student->personal_image=$image_path;
         $student->save();
-        return view("admin.edit_students",["account"=>$_SESSION["user"]]);
+        $std_id=$student->id;
+        $std_class=new attend;
+        $std_class->std_id=$std_id;
+        $std_class->class_id =$request->input("std_class");
+        $std_class->save();
+        return view("admin.edit_students",["account"=>$_SESSION["user"],"data"=>$this->get_important_data()]);
     }
     protected function search_by_name($name){
         return DB::select("SELECT * FROM students where name like '%".$name."%';");

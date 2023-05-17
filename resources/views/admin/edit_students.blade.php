@@ -55,6 +55,14 @@
                   <label for="student_birth_date"> الجنيسة</label>
                   <input type="text" name="nationality" id=""class='form-control'placeholder="الجنسية">
                 </div>
+                <div class='form-group'>
+                  <label for="student_class">فصل الطالب</label>
+                  <select name="std_class" id=""class='form-control'>
+                    @foreach ($data["classies"] as $class)
+                        <option value="{{$class->id}}">{{$class->class}}</option>
+                    @endforeach
+                  </select>
+                </div>
                 @csrf
                 <div class="form-group">
                   <label for="student_phone">رقم هاتف الطالب</label>

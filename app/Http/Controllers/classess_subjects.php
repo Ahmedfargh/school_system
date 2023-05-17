@@ -125,4 +125,7 @@ class classess_subjects extends Controller
         $teachs->save();
         return ["status"=>"تمت العملية بنجاح"];
     }
+    public function add_student_to_class(Request $req){
+        
+    }
 }
