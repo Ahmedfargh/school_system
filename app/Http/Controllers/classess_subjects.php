@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\class_model;
 use App\Models\subject;
 use App\Models\teachs;
+use App\Models\price;
 class classess_subjects extends Controller
 {
     //
@@ -43,6 +44,11 @@ class classess_subjects extends Controller
         $class->class=$req->input("class_label");
         $class->supervisor =$req->input("teacher_id");
         $class->save();
+        $price=new price;
+        $price->name=$class->class;
+        $price->class_id=$class->id;
+        $price->price=$req->input("class_cost");
+        $price->save();
         $data=$this->get_class_page_Data();
         $data["status"]="تمت عملية أضافة الفصل بنجاح";
         return view("admin.class_edit",["account"=>$_SESSION["user"],"data"=>$data]);

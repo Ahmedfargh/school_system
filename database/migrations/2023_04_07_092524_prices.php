@@ -18,6 +18,7 @@ class Prices extends Migration
             $table->integer("id")->primary();
             $table->string("name",64);
             $table->integer("price");
+            $table->integer("class_id")->unique();
         });
     }
 

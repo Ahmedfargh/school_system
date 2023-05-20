@@ -15,7 +15,7 @@ class Classies extends Migration
     {
         //
         Schema::create("classies",function(Blueprint $table){
-            $table->string("class",15);
+            $table->string("class",35);
             $table->bigIncrements("id");
             $table->bigInteger("supervisor");
         });

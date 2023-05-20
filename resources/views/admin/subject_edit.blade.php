@@ -95,7 +95,7 @@
               </div><!-- /.box -->
             </div><!-- /.col -->
             <div class="col-md-9">
-              <form action="{{route('add_class')}}" method="post">
+              <form action="{{route('add_subject')}}" method="post">
                 @csrf
               <div class="box box-primary">
                   <div class="box-header with-border">

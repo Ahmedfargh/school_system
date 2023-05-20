@@ -85,6 +85,9 @@
                         @endforeach
                       </select>
                     </div>
+                    <div class='form-group'>
+                      <input type="number" name="class_cost" id="class_cost"class='form-control'placeholder="مصاريف الفصل">
+                    </div>
                   </div><!-- /.box-body -->
                 <div class="box-footer">
                   <div class="pull-right">

@@ -36,7 +36,7 @@ Route::get("admin/edit/student",function(){
 })->middleware("protected_against_guest_users")->name("edit_student");
 Route::get("admin/edit/teacher",function(){
     $cont=new adminController;
-    $data=$con->get_important_data();
+    $data=$cont->get_important_data();
     return view("admin.edit_teacher",["account"=>$_SESSION["user"],"data"=>    $data]);
 })->name("edit_teacher")->middleware("protected_against_guest_users");
 
@@ -63,7 +63,7 @@ Route::get("admin/edit/subjects",function(){
     $data=$classess_subjects->get_class_page_Data();
     return view("admin.subject_edit",["account"=>$_SESSION["user"],"data"=>$data]);
 })->name("edit_subjects")->middleware("protected_against_guest_users");
-Route::POST("admin/edit/add/subject",[classess_subjects::class,"add_subject"])->name("add_class")->middleware("protected_against_guest_users");
+Route::POST("admin/edit/add/subject",[classess_subjects::class,"add_subject"])->name("add_subject")->middleware("protected_against_guest_users");
 Route::any("admin/search/subject/",[classess_subjects::class,"search_subject"]);
 Route::any("admin/subject/update",[classess_subjects::class,"update_subject"]);
 Route::any("admin/teacher/assign_subject",[classess_subjects::class,"assign_subject_to_teacher"]);
