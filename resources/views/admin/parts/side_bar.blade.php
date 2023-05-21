@@ -39,7 +39,12 @@
         </a>
       </li>
       <li class='treeview'>
-        <a href="{{route('edit_subjects')}}"><li class='fa fa-user'></li>المواد الدراسية</a>
+        <a href="{{route('edit_subjects')}}">المواد الدراسية</a>
+      </li>
+      <li class='treeview'>
+        <a href="{{route('parent_edit_page')}}">
+          أولياء الأمور
+        </a>
       </li>
     </ul>
   </section>
