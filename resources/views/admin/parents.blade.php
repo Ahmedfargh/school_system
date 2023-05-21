@@ -12,14 +12,9 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Blank page
-            <small>it all starts here</small>
+            أولياء الأمور
           </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Examples</a></li>
-            <li class="active">Blank page</li>
-          </ol>
+          
         </section>
 
         <!-- Main content -->
@@ -28,14 +23,70 @@
           <!-- Default box -->
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Title</h3>
+              <h3 class="box-title">أضافة ولى أمر</h3>
               <div class="box-tools pull-right">
-                <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                @if (isset($status_message))
+                    {{$status_message}}
+                @endif
               </div>
             </div>
             <div class="box-body">
-              Start creating your amazing application!
+              <form action="{{route('add_parent')}}" method="post">
+                @csrf
+                <div class='input-group input-group-md'>
+                  <label for="parent_name"class='input-group-addon'> أسم ولى الامر</label>
+                  <input type="text" name="parent_name"class='form-control'>
+                </div>
+                <div class='input-group'>
+                  <label for="student_number"class='input-group-addon'>
+                    رقم الطالب
+                  </label>
+                  <input type="number" name="student_number" id="student_number"class='form-control'>
+                </div>
+                <div class='input-group'>
+                  <label for="parent_job"class='input-group-addon'>
+                    وظيفة ولى الأمر
+                  </label>
+                  <input type="text" name="parent_job" id="parent_job"class='form-control'>
+                </div>
+                <div class='input-group'>
+                  <label for="parent_email"class='input-group-addon'>
+                      البريد الألكترونى لوالى الأمر
+                  </label>
+                  <input type="email" name="parent_email" id="parent_email"class='form-control'>
+                </div>
+                <div class='input-group'>
+                  <label for="parent_phone"class='input-group-addon'>
+                    هاتف ولى الأمر
+                  </label>
+                  <input type="phone" name="parent_phone" id="parent_phone"class='form-control'>
+                </div>
+                <div class='input-group'>
+                  <label for="parent_address"class='input-group-addon'>
+                      عنوان ولى الأمر
+                  </label>
+                  <input type="text" name="parent_address" id="parent_address"class='form-control'>
+                </div>
+                <div class='input-group'>
+                  <div class="input-group-btn">
+                    <button class='btn btn-default dropdown-toggle'type="button"data-toggle="dropdown">أضافة أو إلغاء
+                      <span class='caret'></span></button>
+                      <ul class='dropdown-menu'>
+                        <li>
+                          <button class='btn btn-warning'type="reset">
+                            إلغاء
+                          </button>
+                        </li>
+                        <li>
+                          <button class='btn btn-success'type="submit">
+                            أضافة
+                          </button>
+                        </li>
+                      </ul>
+                    </button>
+                  </div>
+                </div>
+              </form>
             </div><!-- /.box-body -->
             <div class="box-footer">
               Footer

@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\classess_subjects;
+use App\Http\Controllers\parents_relations;
 session_start();
 
 /*
@@ -92,3 +93,4 @@ Route::get("admin/parents/page",function(){
     $data=$cont->get_important_data();
     return view("admin.parents",["account"=>$_SESSION["user"],"data"=>$data]);
 })->middleware("protected_against_guest_users")->name("parent_edit_page");
+Route::post("admin/parents/add",[parents_relations::class,"add_parent"])->middleware("protected_against_guest_users")->name("add_parent");

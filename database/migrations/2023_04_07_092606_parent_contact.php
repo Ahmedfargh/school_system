@@ -19,6 +19,7 @@ class ParentContact extends Migration
             $table->string("name",64);
             $table->string("address",128);
             $table->string("phone",15);
+            $table->string("email",32);
             $table->string("job",35)->nullable();
         });
     }

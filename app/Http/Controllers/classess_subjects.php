@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\class_model;
-use App\Models\subject;
+use App\Model\subjects;
 use App\Models\teachs;
 use App\Models\price;
 class classess_subjects extends Controller
