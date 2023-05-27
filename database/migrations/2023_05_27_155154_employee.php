@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Students extends Migration
+class Employee extends Migration
 {
     /**
      * Run the migrations.
@@ -14,20 +14,18 @@ class Students extends Migration
     public function up()
     {
         //
-        Schema::create("students",function (Blueprint $table){
+        Schema::create("employee",function(Blueprint $table){
             $table->integer("id")->primary();
-            $table->string("name",60);
-            $table->string("phone",15);
-            $table->string("email",32);
-            $table->string("address",64);
-            $table->dateTime("birth_date");
-            $table->dateTime("join_date");
+            $table->string("name",64);
+            $table->string("phone",15)->unique();
+            $table->string("email",32)->unique();
+            $table->string("address",128);
+            $table->datetime("joined_at");
+            $table->datetime("birth_date");
             $table->string("nat_id",32)->unique();
             $table->integer("added_by");
-            $table->integer("salary");
             $table->string("Religion",15);
             $table->string("gender",10);
-            //$table->foreign("added_by")->references("id")->on("students")->onDelete("set null")->onUpdate("cascade");
         });
     }
 
@@ -39,6 +37,5 @@ class Students extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists("students");
     }
 }

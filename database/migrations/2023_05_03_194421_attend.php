@@ -15,7 +15,7 @@ class Attend extends Migration
     {
         //
         Schema::create("attend",function(Blueprint $table){
-            $table->integer("std_id")-unique();
+            $table->integer("std_id")->unique();
             $table->integer("class_id");
         });
     }

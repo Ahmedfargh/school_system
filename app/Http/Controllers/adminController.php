@@ -98,7 +98,9 @@ class adminController extends Controller
             "admin_count"=>DB::table("admins")->count(),
             "classes_count"=>DB::table("classies")->count(),
             "students_have_credit"=>DB::table("depts")->count(),
-            "teacher_count"=>DB::table("teachers")->count()
+            "teacher_count"=>DB::table("teachers")->count(),
+            "teacher_salary_sum"=>DB::SELECT("SELECT SUM(salary) as total_salary FROM teachers"),
+            "employee_salary_sum"=>DB::SELECT("SELECT SUM(salary) as total_salary FROM employee")
         ];
     }
     public function get_statis(Request $req){
@@ -145,18 +147,20 @@ class adminController extends Controller
         return ["status"=>"fuck you"];
     }
     function add_Teacher(Request $request){
-        $student=new teacher;
-        $student->name=$request->input("teacher_name");
-        $student->email=$request->input("teacher_email");
-        $student->phone=$request->input("teacher_phone");
-        $student->address=$request->input("teacher_address");
-        $student->nat_id =$request->input("teacher_nat_id");
-        $student->birth_date=$request->input("teacher_birth_date");
-        $student->gender=$request->input("gender");
-        $student->relegion	=$request->input("Relegion");
+        $teacher=new teacher;
+        $teacher->name=$request->input("teacher_name");
+        $teacher->email=$request->input("teacher_email");
+        $teacher->phone=$request->input("teacher_phone");
+        $teacher->address=$request->input("teacher_address");
+        $teacher->nat_id =$request->input("teacher_nat_id");
+        $teacher->birth_date=$request->input("teacher_birth_date");
+        $teacher->gender=$request->input("gender");
+        $teacher->relegion=$request->input("Relegion");
         $image_path="\\".$request->file("teacher_image")->move("public\\images\\teachers\\");
-        $student->personal_image=$image_path;
-        $student->save();
+        $teacher->personal_image=$image_path;
+        $teacher->salary=$request->input("teacher_salary");
+        $teacher->type=$request->input("employee_type");
+        $teacher->save();
         return view("admin.edit_teacher",["account"=>$_SESSION["user"],"status"=>"تمت عملية الأضافة بنجاح"]);
     }
     protected function search_teacher_by_name($name){

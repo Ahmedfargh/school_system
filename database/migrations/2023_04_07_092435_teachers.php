@@ -13,8 +13,11 @@ class Teachers extends Migration
      */
     public function up()
     {
-        //
-        Schema::create("teachers",function(Blueprint $table){
+        /*
+        * teacher = 1
+        * normal employee =2
+        */
+        Schema::create("employee",function(Blueprint $table){
             $table->integer("id")->primary();
             $table->string("name",64);
             $table->string("phone",15)->unique();
@@ -26,6 +29,7 @@ class Teachers extends Migration
             $table->integer("added_by");
             $table->string("Religion",15);
             $table->string("gender",10);
+            $table->integer("type");
         });
     }
 

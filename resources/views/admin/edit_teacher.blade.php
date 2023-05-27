@@ -16,7 +16,7 @@
         <section class="content-header">
           <div class="box box-primary">
             <div class="box-header">
-              <h3 class="box-title"> إضافة معلم</h3>
+              <h3 class="box-title"> إضافة موظف</h3>
             </div><!-- /.box-header -->
             <!-- form start -->
             <form role="form"method="POST"enctype="multipart/form-data"action="{{route('add_teacher')}}">
@@ -25,33 +25,37 @@
                     {{$status}}
                     
                 @endif</h3>
-                <div class="form-group">
-                  <label for="student_name">أسم المعلم</label>
-                  <input type="text" class="form-control"name='teacher_name' id="teacher_name" placeholder="أسم المعلم"required>
+                <div class="input-group">
+                  <label for="student_name"class='input-group-addon'>أسم الموظف</label>
+                  <input type="text" class="form-control"name='teacher_name' id="teacher_name" placeholder="أسم موظف"required>
                 </div>
-                <div class="form-group">
-                  <label for="student_email">البريد الألكترونى</label>
-                  <input type="email" class="form-control"name="teacher_email" id="teacher_email" placeholder="بريد المعلم"required>
+                <div class="input-group">
+                  <label for="student_email"class='input-group-addon'>البريد الألكترونى</label>
+                  <input type="email" class="form-control"name="teacher_email" id="teacher_email" placeholder="بريد موظف"required>
                 </div>
-                <div class="form-group">
-                  <label for="student_address">العنوان</label>
-                  <input type="text" class="form-control"name="teacher_address" id="teacher_address" placeholder="عنوان المعلم"required>
+                <div class="input-group">
+                  <label for="student_address"class='input-group-addon'>العنوان</label>
+                  <input type="text" class="form-control"name="teacher_address" id="teacher_address" placeholder="عنوان الموظف"required>
                 </div>
-                <div class="form-group">
-                  <label for="student_birth_date">تاريخ الميلاد</label>
+                <div class="input-group">
+                  <label for="student_birth_date"class='input-group-addon'>تاريخ الميلاد</label>
                   <input type="date" class="form-control"name='teacher_birth_date'id="teacher_birth_date"required>
                 </div>
                 @csrf
-                <div class="form-group">
-                  <label for="student_phone">رقم هاتف المعلم</label>
+                <div class="input-group">
+                  <label for="student_phone"class='input-group-addon'>رقم هاتف الموظف</label>
                   <input type="phone" class="form-control"name='teacher_phone'id="teacher_phone"placeholder="رقم الهاتف"required>
                 </div>
-                <div class="form-group">
-                  <label for="teacher_id">الرقم القومى</label>
+                <div class="input-group">
+                  <label for="teacher_id"class='input-group-addon'>الرقم القومى</label>
                   <input type="phone" class="form-control"name='teacher_nat_id'id="teacher_nat_id"placeholder="الرقم القومى"required>
                 </div>
-                <div class="form-group">
-                  <label for="teacher_relegion">الرقم الديانة</label>
+                <div class='input-group'>
+                  <label for="teacher_salary"class='input-group-addon'> الراتب </label>
+                  <input type="number"class='form-control'name="teacher_salary"id="teacher_salary">
+                </div>
+                <div class="input-group">
+                  <label for="teacher_relegion"class='input-group-addon'>الرقم الديانة</label>
                   <select name="Relegion"class='from-control' id=""required>
                     <option value="مسلم">
                       مسلم
@@ -61,8 +65,8 @@
                     </option>
                   </select>
                 </div>
-                <div class="form-group">
-                  <label for="teacher_gender">النوع </label>
+                <div class="input-group">
+                  <label for="teacher_gender"class='input-group-addon'>النوع </label>
                   <select name="gender"class='from-control' id="gender"required>
                     <option value="ذكر">
                       ذكر
@@ -72,9 +76,20 @@
                     </option>
                   </select>
                 </div>
-                <div class="form-group">
-                  <label for="student_image">أرفاق صورة المعلم</label>
-                  <input type="file"name="teacher_image" id="teacher_image"required>
+                <div class="input-group">
+                  <label for="employee_type"class='input-group-addon'>العمل المعين له الموظف </label>
+                  <select name="employee_type"class='from-control' id="gender"required>
+                    <option value="0">
+                      معلم
+                    </option>
+                    <option value="1">
+                      موظف عادى
+                    </option>
+                  </select>
+                </div>
+                <div class="input-group">
+                  <label for="student_image"class='input-group-addon'>أرفاق صورة الموظف</label>
+                  <input type="file"class='btn btn-info'name="teacher_image" id="teacher_image"required>
                 </div>
                 </div>
               </div><!-- /.box-body -->

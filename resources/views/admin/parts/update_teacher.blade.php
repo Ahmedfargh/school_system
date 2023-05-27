@@ -2,6 +2,10 @@
     .update_std{
         background-color: rgb(255, 255, 255);
     }
+    .input-group-addon{
+      font-size: 20px;
+      font-style: bold;
+    }
 </style>
 <section class="update_std">
 <div class="row">
@@ -19,9 +23,11 @@
           <h3 class="box-title">تحديث الاسم</h3>
           <div class="box-tools">
             <div class="input-group">
-              <input type="text" name="teacher_name"id="new_teacher_name" class="form-control input-sm pull-right" style="width: 150px;" placeholder="الأسم الجديد"/>
-              <div class="input-group-btn">
-                <button class="btn btn-info"id="update_name_teacher">تحديث</button>
+              <div class='btn-group'>
+                <input type="text" name="teacher_name"id="new_teacher_name" class="form-control input-sm pull-right" style="width: 150px;" placeholder="الأسم الجديد"/>
+                <div class="input-group-btn">
+                  <button class="btn btn-info"id="update_name_teacher">تحديث</button>
+                </div>
               </div>
             </div>
           </div>
@@ -30,9 +36,11 @@
           <h3 class="box-title">تحديث العنوان</h3>
           <div class="box-tools">
             <div class="input-group">
-              <input type="text" name="teacher_address"id="new_teacher_address" class="form-control input-sm pull-right" style="width: 150px;" placeholder="العنوان"/>
-              <div class="input-group-btn">
-                <button class="btn btn-sm btn-info"id="update_teacher_address">نحديث</button>
+              <div class='btn-group'>
+                <input type="text" name="teacher_address"id="new_teacher_address" class="form-control input-sm pull-right" style="width: 150px;" placeholder="العنوان"/>
+                <div class="input-group-btn">
+                  <button class="btn btn-sm btn-info"id="update_teacher_address">نحديث</button>
+                </div>
               </div>
             </div>
           </div>
@@ -42,9 +50,11 @@
             <h3 class="box-title">تحديث الهاتف</h3>
             <div class="box-tools">
               <div class="input-group">
-                <input type="text" name="teacher_phone"id="new_teacher_phone" class="form-control input-sm pull-right" style="width: 150px;" placeholder="العنوان"/>
-                <div class="input-group-btn">
-                  <button class="btn btn-sm btn-info"id="update_teacher_phone">نحديث</button>
+                <div class='btn-group'>
+                  <input type="text" name="teacher_phone"id="new_teacher_phone" class="form-control input-sm pull-right" style="width: 150px;" placeholder="العنوان"/>
+                  <div class="input-group-btn">
+                    <button class="btn btn-sm btn-info"id="update_teacher_phone">نحديث</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -53,9 +63,11 @@
             <h3 class="box-title">تحديث البريد الالأكترونى </h3>
             <div class="box-tools">
               <div class="input-group">
-                <input type="email" name="new_teacher_email"id="new_teacher_email" class="form-control input-sm pull-right" style="width: 150px;" placeholder="البريد الألكترونى"/>
-                <div class="input-group-btn">
-                  <button class="btn btn-sm btn-info"id="update_teacher_email">نحديث</button>
+                <div class='btn-group'>
+                  <input type="email" name="new_teacher_email"id="new_teacher_email" class="form-control input-sm pull-right" style="width: 150px;" placeholder="البريد الألكترونى"/>
+                  <div class="input-group-btn">
+                    <button class="btn btn-sm btn-info"id="update_teacher_email">نحديث</button>
+                  </div>
                 </div>
               </div>
             </div>

@@ -15,10 +15,8 @@
     <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
-      <li class="header">الروابط
-
-      </li>
-      <li class="active treeview">
+      
+      <li class="treeview">
         <a href="{{route('admin_index')}}">
           لوحة التحكم
         </a>
@@ -30,7 +28,7 @@
       </li>
       <li class="treeview">
         <a href="{{route('edit_teacher')}}">
-          المعلمين 
+          المعلمين و الموظفيين
         </a>
       </li>
       <li class="treeview">
