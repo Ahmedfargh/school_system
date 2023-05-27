@@ -12,22 +12,22 @@ class classess_subjects extends Controller
 {
     //
     public function get_supervisors(){
-        return DB::select("SELECT teachers.name as name,teachers.email as email,teachers.id as id from teachers, classies WHERE teachers.id = classies.supervisor");
+        return DB::select("SELECT teachers.name as name,teachers.email as email,teachers.id as id from teachers, classies WHERE teachers.id = classies.supervisor and teachers.type=0");
     }
     public function get_all_subjects(){
         return DB::select("SELECT * from subject");
     }
     public function get_all_non_supervisors(){
-        return DB::select("SELECT teachers.name as name_,teachers.email as email,teachers.id as id from teachers where teachers.id Not in (SELECT supervisor from classies)");
+        return DB::select("SELECT teachers.name as name_,teachers.email as email,teachers.id as id from teachers where teachers.id Not in (SELECT supervisor from classies) and teachers.type=0");
     }
     public function get_all_classies(){
-        return DB::select("SELECT teachers.name as name_,classies.class as class_name,classies.id as class_id from teachers,classies where teachers.id=classies.supervisor");
+        return DB::select("SELECT teachers.name as name_,classies.class as class_name,classies.id as class_id from teachers,classies where teachers.id=classies.supervisor and teachers.type=0");
     }
     public function get_all_actual_teaching(){
-        return DB::select("SELECT teachers.name as name , teachers.id as id FROM teachers  WHERE teachers.id  in(SELECT teacher_id FROM teachs)");
+        return DB::select("SELECT teachers.name as name , teachers.id as id FROM teachers  WHERE teachers.id  in(SELECT teacher_id FROM teachs) and teachers.type=0");
     }
     public function get_all_non_acutal_teaching(){
-        return DB::select("SELECT teachers.name as name , teachers.id as id FROM teachers  WHERE teachers.id  NOT in(SELECT teacher_id FROM teachs)");
+        return DB::select("SELECT teachers.name as name , teachers.id as id FROM teachers  WHERE teachers.id  NOT in(SELECT teacher_id FROM teachs)and teachers.type=0");
     }
     public function get_class_page_Data(){
         return [
@@ -54,10 +54,10 @@ class classess_subjects extends Controller
         return view("admin.class_edit",["account"=>$_SESSION["user"],"data"=>$data]);
     }
     public function search_id($value){
-        return DB::select("SELECT teachers.name as name_,classies.class as class_name,classies.id as class_id from teachers,classies where teachers.id=classies.supervisor AND classies.id=".$value);
+        return DB::select("SELECT teachers.name as name_,classies.class as class_name,classies.id as class_id from teachers,classies where teachers.id=classies.supervisor  and teachers.type=1 AND classies.id=".$value);
     }
     public function search_by_super_name($value){
-        return DB::select("SELECT teachers.name as name_,classies.class as class_name,classies.id as class_id from teachers,classies where teachers.id=classies.supervisor AND teachers.id=".$value);
+        return DB::select("SELECT teachers.name as name_,classies.class as class_name,classies.id as class_id from teachers,classies where teachers.id=classies.supervisor and teachers.type=1 AND teachers.id=".$value);
     }
     public function Search(Request $req){
         $value=$req->input("value");

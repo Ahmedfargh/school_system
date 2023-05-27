@@ -46,7 +46,7 @@
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li class="text-center"><span class="label label-primary">{{count($data['nosupervisor'])}}</span> عدد مشرفيين الفصول </li>
+                    <li class="text-center"><span class="label label-primary">{{count($data['nosupervisor'])}}</span>العدد</li>
                     @foreach ($data['all_non_actual_teachers'] as $teacher)
                     <li><a href="#">{{$teacher->name}}</a></li>               
                     @endforeach
