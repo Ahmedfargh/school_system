@@ -143,6 +143,18 @@ class adminController extends Controller
             $std->birth_date=$value;
             $std->save();
             return $result;
+        }else if($field=="class"){
+            $attend=DB::select("select * from attend where attend.std_id=".$std_id);
+            if(count($attend)==0){
+                $attend=new attend;
+                $attend->std_id=$std_id;
+                $attend->class_id=$value;
+                $attend->save();
+            }else{
+                $attend=$attend[0];
+                $attend->class_id=$value;
+            }
+            return ["status"=>"تمت العملية بنجاح"];
         }
         return ["status"=>"fuck you"];
     }
@@ -235,7 +247,8 @@ class adminController extends Controller
     public function get_student_pages_data($id){
         $data=array(
             "student_data"=>DB::select("SELECT * FROM students where id=".$id),
-            "student_parents"=>DB::select("select * FROM parents,relation where relation.parent_id=parents.id AND relation.std_id=".$id)
+            "student_parents"=>DB::select("select * FROM parents,relation where relation.parent_id=parents.id AND relation.std_id=".$id),
+            "student_classies"=>DB::select("SELECT * FROM attend,classies WHERE attend.class_id=classies.id and attend.std_id=".$id)
         );
         #print_r($data);
         $account_data=$this->get_important_data();

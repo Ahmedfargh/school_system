@@ -172,6 +172,20 @@ $("#update_name").on("click",function(){
         alert("لا يوجد رقم الطالب");
     }
 });
+$("#update_std_class").on("click",function(){
+    let std_id=$("#std_id").val();
+    let std_value=$("#new_std_class").val();
+    if(std_id && std_value){
+        update_std({_token:$("input[name='_token']").val(),std_id:std_id,field:"class",value:std_value},{
+            render:function(data){
+                console.log(data);
+                alert("تمت عملية التحديث بنجاح");
+            }
+        });
+    }else{
+        alert("لا يوجد رقم الطالب");
+    }
+});
 $("#update_std_address").on("click",function(){
     let std_id=$("#std_id").val();
     let std_value=$("#new_std_address").val();

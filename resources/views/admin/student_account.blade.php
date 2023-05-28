@@ -83,6 +83,15 @@
                       <span class='input-group-addon'> الجنسية </span>
                       <input type="text"value="{{$student_data[0]->nationality}}"disabled>
                     </div>
+                    <div class='input-group marginal'>
+                      <span class='input-group-addon'> الفصل </span>
+                      @if (count($student_classies))
+                          <input type="text"value="{{$student_classies[0]->class}}"class='form-control'diabled>
+     
+                      @else
+                          <input type="text"class='form-control'value="ليس مسجل فى أى فصل ">
+                      @endif
+                    </div>
                   </div>
                 </div>
               </div>

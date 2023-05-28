@@ -48,7 +48,21 @@
               </div>
             </div>
         </div>
-        
+        <div class="box-header">
+          <h3 class="box-title">النقل للفصل  </h3>
+          <div class="box-tools">
+            <div class="input-group">
+              <select name="" id="new_std_class">
+                @foreach ($data["classies"] as $class)
+                    <option value="{{$class->id}}">{{$class->class}}</option>
+                @endforeach
+              </select>
+              <div class="input-group-btn">
+                <button class="btn btn-sm btn-info"id="update_std_class">نحديث</button>
+              </div>
+            </div>
+          </div>
+      </div>
       </div><!-- /.box -->
     </div>
   </div>
