@@ -102,3 +102,8 @@ Route::get("admin/student/data/{id}",function($id){
     $data=$cont->get_student_pages_data($id);
     return view("admin.student_account",$data);
 })->name("student_data")->middleware("protected_against_guest_users");
+Route::get("admin/employee/data/{id}",function($id){
+    $cont=new adminController;
+    $data=$cont->get_employee_pages_data($id);
+    return view("admin.employee_type",$data);
+})->name("employee_page")->middleware("protected_against_guest_users");

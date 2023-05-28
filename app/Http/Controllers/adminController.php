@@ -242,4 +242,12 @@ class adminController extends Controller
         $data["account"]=$_SESSION["user"];
         return $data;
     }
+    public function get_employee_pages_data($id){
+        $data=array(
+            "teacher_data"=>DB::select("SELECT * FROM teachers where id=".$id),
+            "subjects"=>DB::select("SELECT * FROM teachs,subject where teachs.subj_id=subject.id and teachs.teacher_id=".$id)
+        );
+        $data["account"]=$_SESSION["user"];
+        return $data;
+    }
 }
