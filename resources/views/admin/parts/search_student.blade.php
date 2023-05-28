@@ -7,7 +7,7 @@
             <div class="input-group">
               <input type="text" name="table_search" class="form-control input-sm pull-right"id="student_by_name" style="width: 150px;" placeholder="Search"/>
               <div class="input-group-btn">
-                <button class="btn btn-sm btn-default"id="search_student_by_name"class="search_student_by_name"><i class="fa fa-search"></i></button>
+                <button class="btn btn-sm btn-default"id="search_student_by_name"class="search_student_by_name">أبحث</button>
               </div>
             </div>
           </div>
@@ -18,7 +18,7 @@
             <div class="input-group">
               <input type="text" name="table_search"id="search_by_address" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
               <div class="input-group-btn">
-                <button class="btn btn-sm btn-default"id="search_student_by_address"><i class="fa fa-search"></i></button>
+                <button class="btn btn-sm btn-default"id="search_student_by_address">أبحث</button>
               </div>
             </div>
           </div>
@@ -29,7 +29,7 @@
             <div class="input-group">
               <input type="text" name="table_search"id="search_by_id" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
               <div class="input-group-btn">
-                <button class="btn btn-sm btn-default"id="search_student_by_id"><i class="fa fa-search"></i></button>
+                <button class="btn btn-sm btn-default"id="search_student_by_id">أبحث</button>
               </div>
             </div>
           </div>

@@ -232,4 +232,14 @@ class adminController extends Controller
         }
         return ["status"=>"fuck you"];
     }
+    public function get_student_pages_data($id){
+        $data=array(
+            "student_data"=>DB::select("SELECT * FROM students where id=".$id),
+            "student_parents"=>DB::select("select * FROM parents,relation where relation.parent_id=parents.id AND relation.std_id=".$id)
+        );
+        #print_r($data);
+        $account_data=$this->get_important_data();
+        $data["account"]=$_SESSION["user"];
+        return $data;
+    }
 }

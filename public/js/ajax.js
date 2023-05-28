@@ -5,12 +5,12 @@ function serialze_data(data){
 function render_search_student(data){
 
     console.log(data);
-    html="<tr><th>صورة الطالب</th><th>رقم الطالب</th><th>الرقم القومى</th><th>تاريخ الأنضمام </th><th>تاريخ الميلاد</th><th>العنوان</th><th>البريد الألكترونى</th><th>الأسم</th><th>أكشن</th></tr>"
+    html="<tr><th>كامل بيانات الطالب </th><th>رقم الطالب</th><th>الرقم القومى</th><th>تاريخ الأنضمام </th><th>تاريخ الميلاد</th><th>العنوان</th><th>البريد الألكترونى</th><th>الأسم</th><th>أكشن</th></tr>"
     for(student in data){
         console.log(student)
         html+="<tr>";
         html+="<td>";
-        html+="<a href='"+data[student]["personal_image"]+"'>صورة الطالب</a>";
+        html+="<a href='/admin/student/data/"+data[student]["id"]+"'>كامل بيانات الطالب الطالب</a>";
         html+="</td>";
         html+="<td>";
         html+=data[student]["id"];

@@ -94,3 +94,11 @@ Route::get("admin/parents/page",function(){
     return view("admin.parents",["account"=>$_SESSION["user"],"data"=>$data]);
 })->middleware("protected_against_guest_users")->name("parent_edit_page");
 Route::post("admin/parents/add",[parents_relations::class,"add_parent"])->middleware("protected_against_guest_users")->name("add_parent");
+/*
+* صفحات أعضاء التطبيق
+*/
+Route::get("admin/student/data/{id}",function($id){
+    $cont=new adminController;
+    $data=$cont->get_student_pages_data($id);
+    return view("admin.student_account",$data);
+})->name("student_data")->middleware("protected_against_guest_users");

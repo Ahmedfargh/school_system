@@ -89,10 +89,11 @@
               </form>
             </div><!-- /.box-body -->
             <div class="box-footer">
-              Footer
             </div><!-- /.box-footer-->
           </div><!-- /.box -->
-
+          <div class="box">
+            
+          </div>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
 
