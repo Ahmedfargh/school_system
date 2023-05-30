@@ -244,11 +244,18 @@ class adminController extends Controller
         }
         return ["status"=>"fuck you"];
     }
+    public function student_class($id){
+        $data=DB::select("SELECT * FROM attend  where std_id=".$id);
+        $student_subject=DB::select("SELECT * FROM subject where id in (select subj_id from study where class_id=".$data[0]->class_id.")");
+        //print_r($student_subject);
+        return $student_subject;
+    }
     public function get_student_pages_data($id){
         $data=array(
             "student_data"=>DB::select("SELECT * FROM students where id=".$id),
             "student_parents"=>DB::select("select * FROM parents,relation where relation.parent_id=parents.id AND relation.std_id=".$id),
-            "student_classies"=>DB::select("SELECT * FROM attend,classies WHERE attend.class_id=classies.id and attend.std_id=".$id)
+            "student_classies"=>DB::select("SELECT * FROM attend,classies WHERE attend.class_id=classies.id and attend.std_id=".$id),
+            "student_subjects"=>$this->student_class($id)
         );
         #print_r($data);
         $account_data=$this->get_important_data();
@@ -258,7 +265,7 @@ class adminController extends Controller
     public function get_employee_pages_data($id){
         $data=array(
             "teacher_data"=>DB::select("SELECT * FROM teachers where id=".$id),
-            "subjects"=>DB::select("SELECT * FROM teachs,subject where teachs.subj_id=subject.id and teachs.teacher_id=".$id)
+            "subjects"=>DB::select("SELECT * FROM teachs,subject where teachs.subj_id=subject.id and teachs.teacher_id=".$id),
         );
         $data["account"]=$_SESSION["user"];
         return $data;

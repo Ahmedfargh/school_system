@@ -125,8 +125,9 @@
                   </td>
                   
                 </tr>
-                <tr>
+                
                   @foreach ($student_parents as $parent)
+                  <tr>
                       <td>
                         {{$parent->name}}
                       </td>
@@ -142,9 +143,46 @@
                       <td>
                         {{$parent->address}}
                       </td>
+                    </tr>
                   @endforeach
-                </tr>
               </table>
+              <!-- /.box-footer-->
+            </div>
+            <div class="box-footer">
+            </div>
+            <div class="box">
+              <div class="box-header with-border">
+                <h3 class="box-title">المواد الذى يدرسها الطالب </h3>
+                
+              </div>
+              <div class='box-body'>
+                <table class='table table-hover table-stripped'>
+                  <thead>
+                    <td>
+                      رقم المادة 
+                    </td>
+                    <td>
+                        وصف المادة
+                    </td>
+                    <td>
+                      أسم المادة
+                    </td>
+                  </thead>
+                  @foreach ($student_subjects as $subject)
+                      <td>
+                        {{$subject->id}}
+                      </td>
+                      <td>
+                        {{$subject->description}}
+                      </td>
+                      <td>
+                        {{$subject->subj_name}}
+                      </td>
+                  @endforeach
+                </table>
+              </div>
+              <div class="box-footer">
+              </div><!-- /.box-footer-->
             </div>
           </div>
         </section><!-- /.content -->
