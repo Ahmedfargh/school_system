@@ -90,7 +90,7 @@
           </div><!-- /.box -->
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">أولياء الأمور</h3>
+              <h3 class="box-title">المواد الذى يدرسها </h3>
               
             </div>
             <div class='box-body'>

@@ -44,6 +44,11 @@
           أولياء الأمور
         </a>
       </li>
+      <li class='treeview'>
+        <a href="{{route('server_page')}}">
+          الخوادم
+        </a>
+      </li>
     </ul>
   </section>
   <!-- /.sidebar -->

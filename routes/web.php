@@ -107,3 +107,6 @@ Route::get("admin/employee/data/{id}",function($id){
     $data=$cont->get_employee_pages_data($id);
     return view("admin.employee_type",$data);
 })->name("employee_page")->middleware("protected_against_guest_users");
+Route::get("admin/server/page",function(){
+    return view("admin.server",["account"=>$_SESSION["user"]]);
+})->name("server_page")->middleware("protected_against_guest_users");

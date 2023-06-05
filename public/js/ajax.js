@@ -47,7 +47,7 @@ function render_search_teacher(data){
         console.log(data[teacher])
         html+="<tr>";
         html+="<td>";
-        html+="<a href='"+data[teacher]["personal_image"]+"'>صورة الطالب</a>";
+        html+="<a href='/admin/employee/data/"+data[teacher]["id"]+"'> كامل بيانات المعلم</a>";
         html+="</td>";
         html+="<td>";
         html+=data[teacher]["id"];
