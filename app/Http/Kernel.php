@@ -55,6 +55,7 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $routeMiddleware = [
+        "record_visit"=>\App\Http\Middleware\RecordVisitor::class,
         "protected_against_guest_users"=>\App\Http\Middleware\guard::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
