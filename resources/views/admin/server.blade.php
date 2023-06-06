@@ -78,6 +78,8 @@
                 </div>
               </div>
           </div>
+          @include("admin/parts/server_request_charts")
+
         </section>
         <!-- Main content -->
                 

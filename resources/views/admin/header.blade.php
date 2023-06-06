@@ -27,6 +27,10 @@
     <link href="{{asset('plugins/daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet" type="text/css" />
     <!-- bootstrap wysihtml5 - text editor -->
     <link href="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="{{asset('conceptmaster/assets/vendor/fonts/circular-std/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('conceptmaster/assets/libs/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('conceptmaster/assets/vendor/fonts/fontawesome/css/fontawesome-all.css')}}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -41,5 +41,17 @@
     <script src="{{asset('js/ajax.js')}}"></script>
     <script src="{{asset('js/fetch objects.js')}}"></script>
     <script src="{{asset('js/assigning apis.js')}}"></script>
+    <script src="{{asset('plugins/flot/jquery.flot.min.js')}}" type="text/javascript"></script>
+    <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+    <script src="{{asset('plugins/flot/jquery.flot.resize.min.js')}}" type="text/javascript"></script>
+    <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+    <script src="{{asset('plugins/flot/jquery.flot.pie.min.js')}}" type="text/javascript"></script>
+    <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
+    <script src="{{asset('plugins/flot/jquery.flot.categories.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('conceptmaster/assets/vendor/bootstrap/js/bootstrap.bundle.js')}}"></script>
+    <script src="{{asset('conceptmaster/assets/vendor/slimscroll/jquery.slimscroll.js')}}"></script>
+    <script src="{{asset('conceptmaster/assets/vendor/gauge/gauge.min.js')}}"></script>
+    <script src="{{asset('conceptmaster/assets/vendor/gauge/gauge.js')}}"></script>
+    <script src="{{asset('conceptmaster/assets/libs/js/main-js.js')}}"></script>
   </body>
 </html>

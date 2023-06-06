@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\classess_subjects;
 use App\Http\Controllers\parents_relations;
+use App\Http\Controllers\server;
 session_start();
 
 /*
@@ -107,6 +108,11 @@ Route::get("admin/employee/data/{id}",function($id){
     $data=$cont->get_employee_pages_data($id);
     return view("admin.employee_type",$data);
 })->name("employee_page")->middleware("protected_against_guest_users")->middleware("record_visit");
+
+/*
+* server page info 
+*/
 Route::get("admin/server/page",function(){
     return view("admin.server",["account"=>$_SESSION["user"]]);
 })->name("server_page")->middleware("protected_against_guest_users")->middleware("record_visit");
+Route::get("admin/load/request/counter",[server::class,"get_last_counter"])->middleware("protected_against_guest_users")->middleware("record_visit");

@@ -46,6 +46,7 @@ class clearLogTable extends Command
             $counter->counter=$key->request_count;
             $counter->Save();
         }
+        DB::select("TRUNCATE TABLE log");
         return 0;
     }
 }
