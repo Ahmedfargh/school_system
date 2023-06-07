@@ -23,10 +23,10 @@ var opts = {
 };
 var target = document.getElementById('gauge1'); // your canvas element
 var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-gauge.maxValue = 3000; // set max gauge value
+gauge.maxValue = 1000; // set max gauge value
 gauge.setMinValue(0); // Prefer setter over gauge.minValue = 0
 gauge.animationSpeed = 76; // set animation speed (32 is default value)
-gauge.set(0); // set actual value
+//gauge.set(0); // set actual value
 function get_request_gauge(){
     $.ajax({
         type:"get",

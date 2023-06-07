@@ -18,35 +18,37 @@
       
       <li class="treeview">
         <a href="{{route('admin_index')}}">
-          لوحة التحكم
+          <span class='fas fa-th'></span>لوحة التحكم
         </a>
       </li>
       <li class="treeview">
         <a href="{{route('edit_student')}}">
-           الطلاب 
+           <span class='fas fa-user'></span>الطلاب 
         </a>
       </li>
       <li class="treeview">
         <a href="{{route('edit_teacher')}}">
-          المعلمين و الموظفيين
+          <span class='fas fa-user-plus'></span>المعلمين و الموظفيين
         </a>
       </li>
       <li class="treeview">
         <a href="{{route('edit_classes')}}">
-           الفصول الدراسية 
+           <span class='fas fa-building'></span>الفصول الدراسية 
         </a>
       </li>
       <li class='treeview'>
-        <a href="{{route('edit_subjects')}}">المواد الدراسية</a>
+        <a href="{{route('edit_subjects')}}">
+         <span class='fas fa-book'></span> المواد الدراسية
+        </a>
       </li>
       <li class='treeview'>
         <a href="{{route('parent_edit_page')}}">
-          أولياء الأمور
+          <span class='fas fa-user-secret'></span>أولياء الأمور
         </a>
       </li>
       <li class='treeview'>
         <a href="{{route('server_page')}}">
-          الخوادم
+         <span class='fas fa-server'></span> الخوادم 
         </a>
       </li>
     </ul>
