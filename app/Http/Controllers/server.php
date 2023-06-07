@@ -12,4 +12,7 @@ class server extends Controller
     public function get_last_counter(Request $request){
         return DB::select("SELECT * from transfereed_log order by last_record desc limit 1");
     }
+    public function get_all_load(Request $request){
+        return DB::select("SELECT * FROM transfereed_log order by last_record ASC");
+    }
 }

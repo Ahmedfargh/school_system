@@ -55,7 +55,56 @@ function get_request_gauge(){
         }
     });
 }
-var int = setInterval("get_request_gauge()", 2500 );
+var load_gauge_refresh = setInterval("get_request_gauge()", 2500 );
+function load_load_data(){
+    $.ajax({
+        type:"get",
+        url:"/admin/load/request/all_load",
+        data:{_token:$("input[name='_token']").val()},
+        success:function(data){
+            data=serialze_data(data);
+            let i=0;
+            let show=[];
+            for (const key in data) {
+                show.push(data[key]["counter"])
+                i++;
+            }
+            $("#sparkline2").sparkline(show, 
+            {
+                type: 'line',
+                height: 135,
+                barWidth: 10,
+                barSpacing: 4,
+                barColor: '#5969ff',
+                
+                
+            });
+
+            /*console.log(data);
+            console.log("will done");
+            */
+        },
+        error:function(data){
+            data=serialze_data(data);
+            /*console.log(data);*/
+
+        },
+        statusCode:{
+            404:function(data){
+                alert("Error 404");
+            },
+            500:function(data){
+                alert("Error 404");
+            },
+        }
+    });
+}
+
+load_load_data();
+
+var load_sparkline_refresh = setInterval("load_load_data()", 2500 );
+    
+
 
 
 

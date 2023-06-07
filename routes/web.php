@@ -116,3 +116,4 @@ Route::get("admin/server/page",function(){
     return view("admin.server",["account"=>$_SESSION["user"]]);
 })->name("server_page")->middleware("protected_against_guest_users")->middleware("record_visit");
 Route::get("admin/load/request/counter",[server::class,"get_last_counter"])->middleware("protected_against_guest_users")->middleware("record_visit");
+Route::get("admin/load/request/all_load",[server::class,"get_all_load"])->middleware("protected_against_guest_users")->middleware("record_visit");;
