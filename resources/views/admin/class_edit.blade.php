@@ -85,6 +85,17 @@
                         @endforeach
                       </select>
                     </div>
+                    <div class="input-group">
+                      <label for="class_level"class='input-group-addon'>مرحلة الفصل </label>
+                      <select name="class_level"class='form-control' id="class_level"required>
+                        {{$level=9}}
+                        {{$current_level=-1}}
+                        @while ($level>=$current_level)
+                            <option value="{{$current_level}}">{{$current_level}}</option>
+                            {{$current_level++}}
+                        @endwhile
+                      </select>
+                    </div>
                     <div class='form-group'>
                       <input type="number" name="class_cost" id="class_cost"class='form-control'placeholder="مصاريف الفصل">
                     </div>

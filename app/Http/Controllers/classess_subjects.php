@@ -43,6 +43,7 @@ class classess_subjects extends Controller
         $class=new class_model;
         $class->class=$req->input("class_label");
         $class->supervisor =$req->input("teacher_id");
+        $class->level=$req->input("class_level");
         $class->save();
         $price=new price;
         $price->name=$class->class;
